@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Ticker from '../Ticker/index';
 
 const User = ({ _id, username }) => {
   return (
@@ -18,15 +19,17 @@ const UserList = ({ users, title }) => {
 
   const renderUsers = () => {
     if (!users) return null;
-    return users
-      // .filter(user => )
-      .map(user => <User key={user._id} {...user} />);
+    return (
+      users.map(user => <User key={user._id} {...user} />)
+      )
   }
 
   return (
     <>
       <h3>{title}</h3>
       {renderUsers()}
+      <h3>Stock Ticker</h3>
+      <Ticker/>
     </>
   );
 };
