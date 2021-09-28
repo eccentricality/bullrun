@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 
 import ThoughtList from '../components/ThoughtList';
 import ThoughtForm from '../components/ThoughtForm';
+import Trends from './Trends';
 
 import { QUERY_THOUGHTS } from '../utils/queries';
 
@@ -29,6 +30,10 @@ const Blog = () => {
             />
           )}
         </div>
+      </div>
+      <div>
+        GOOGLE TRENDS
+        <Trends />
       </div>
     </main>
   );
