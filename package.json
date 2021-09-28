@@ -17,6 +17,8 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
-    "graphql": "^15.6.0"
+    "@graphql-tools/schema": "^8.2.0",
+    "graphql": "^15.6.0",
+    "graphql-scalars": "^1.10.1"
   }
 }
