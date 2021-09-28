@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
-const { User } = require('../models');
+const { User, Asset, Portfolio } = require('../models');
 
 const resolvers = {
   Query: {
@@ -15,7 +15,7 @@ const resolvers = {
         return User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError('You need to be logged in!');
-    },
+    }
   },
 
   Mutation: {

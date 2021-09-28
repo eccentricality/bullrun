@@ -8,6 +8,10 @@ const userSchema = new Schema({
     unique: true,
     trim: true,
   },
+  name: {
+    type: String,
+    required: true
+  },
   email: {
     type: String,
     required: true,
@@ -19,7 +23,13 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   }
-});
+},
+  {
+    timestamps: {
+      createdAt: 'created_at',
+      updatedAt: 'updated_at'
+    }
+  });
 
 userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
