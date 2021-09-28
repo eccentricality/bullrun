@@ -7,10 +7,10 @@ import { QUERY_USERS } from '../utils/queries';
 // Components
 import UserList from '../components/UserList';
 
-import ThoughtList from '../components/ThoughtList';
-import ThoughtForm from '../components/ThoughtForm';
+// import ThoughtList from '../components/ThoughtList';
+// import ThoughtForm from '../components/ThoughtForm';
 
-import { QUERY_THOUGHTS } from '../utils/queries';
+// import { QUERY_THOUGHTS } from '../utils/queries';
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_USERS);
@@ -44,7 +44,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="flex-row justify-center">
+      {/* <div className="flex-row justify-center">
         <div
           className="col-12 col-md-10 mb-3 p-3"
           style={{ border: '1px dotted #1a1a1a' }}
@@ -61,7 +61,7 @@ const Home = () => {
             />
           )}
         </div>
-      </div>
+      </div> */}
     </main>
   );
 };
