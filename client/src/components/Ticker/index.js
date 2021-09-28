@@ -31,7 +31,9 @@ export default function Ticker() {
           {/* loop over the stocks */}
           {stocks.map((stock, index) => (
             <div key={index}>
-              <h2>{stock.name}</h2>
+              <h2>Stock Name: {stock.name}</h2>
+              <h2>Stock Currency Type: {stock.currency_name}</h2>
+              <h2>CIK: {stock.cik}</h2>
             </div>
           ))}
         </div>
