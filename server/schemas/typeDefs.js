@@ -1,31 +1,34 @@
 const { gql } = require('apollo-server-express');
+const { DateTimeTypeDefinition } = require('graphql-scalars');
 
 const typeDefs = gql`
+  scalar DateTime
+
   type User {
     _id: ID
     username: String
     name: String
     email: String
     password: String
-    created_at: Date
-    updated_at: Date
+    created_at: DateTime
+    updated_at: DateTime
   }
 
   type Asset {
     _id: ID
     name: String
     ticker: String
-    quantity: Number
-    created_at: Date
-    updated_at: Date
+    quantity: Int
+    created_at: DateTime
+    updated_at: DateTime
     }
 
   type Portfolio {
     _id: ID
     user: User
     assets: [Asset]
-    created_at: Date
-    updated_at: Date
+    created_at: DateTime
+    updated_at: DateTime
   }
 
   type Auth {

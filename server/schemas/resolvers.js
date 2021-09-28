@@ -1,8 +1,10 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 const { User, Asset, Portfolio } = require('../models');
+const { DateTimeResolver } = require('graphql-scalars');
 
 const resolvers = {
+  DateTime: DateTimeResolver,
   Query: {
     users: async () => {
       return User.find();
@@ -15,6 +17,9 @@ const resolvers = {
         return User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError('You need to be logged in!');
+    },
+    assets: async () => {
+      return Asset.find();
     }
   },
 
