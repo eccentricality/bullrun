@@ -20,6 +20,9 @@ const resolvers = {
     },
     assets: async () => {
       return Asset.find();
+    },
+    portfolios: async () => {
+      return await Portfolio.find();
     }
   },
 
@@ -45,8 +48,26 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addPortfolio: async (_, args, context) => {
+      const user = await User.findOne({ _id: args.userId });
+      const portfolio = await Portfolio.create({ user: user, totalCash: 100000, totalAssetValue: 0 });
+      return portfolio;
+    },
+    //This mutation is used to add an asset to a portfolio
+    addAsset: async (_, { userId, name, ticker, quantity, purchasePrice }, context) => {
+      //first find the user to get portfolio
+      const newAsset = { userId, name, ticker, quantity, purchasePrice };
+      const user = await User.findOne({ _id: userId });
+      const asset = await Asset.create(newAsset);
+      const portfolio = await Portfolio.findOne({ user: user });
+      const portfolioTotalCash = portfolio.totalCash;
+      const updatedPortfolio = await Portfolio.findOneAndUpdate({ _id: portfolio._id }, { totalCash: (portfolioTotalCash - (quantity * purchasePrice)), totalAssetValue: (quantity * purchasePrice), $push: { assets: asset } });
+
+      return await Portfolio.findOne({ _id: updatedPortfolio._id });
     }
   }
 };
 
 module.exports = resolvers;
+

@@ -12,6 +12,10 @@ const assetSchema = new Schema({
     quantity: {
         type: Number,
         required: true
+    },
+    purchasePrice: {
+        type: Number,
+        required: true
     }
 },
     {
