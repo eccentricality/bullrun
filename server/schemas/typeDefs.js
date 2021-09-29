@@ -1,8 +1,9 @@
 const { gql } = require('apollo-server-express');
-const { DateTimeTypeDefinition } = require('graphql-scalars');
+const { DateTimeTypeDefinition, NonNegativeFloatTypeDefinition } = require('graphql-scalars');
 
 const typeDefs = gql`
   scalar DateTime
+  scalar NonNegativeFloat
 
   type User {
     _id: ID
@@ -10,6 +11,7 @@ const typeDefs = gql`
     name: String
     email: String
     password: String
+    friends: [User]
     created_at: DateTime
     updated_at: DateTime
   }
@@ -19,6 +21,7 @@ const typeDefs = gql`
     name: String
     ticker: String
     quantity: Int
+    purchasePrice: NonNegativeFloat
     created_at: DateTime
     updated_at: DateTime
     }
@@ -26,6 +29,8 @@ const typeDefs = gql`
   type Portfolio {
     _id: ID
     user: User
+    totalCash: NonNegativeFloat
+    totalAssetValue: NonNegativeFloat
     assets: [Asset]
     created_at: DateTime
     updated_at: DateTime
@@ -49,8 +54,8 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPortfolio(userId: ID!): Portfolio
-    addAsset(portfolioId: ID!): Asset
+    addPortfolio(userId: ID): Portfolio
+    addAsset(userId: ID, name:String, ticker:String, quantity:Int, purchasePrice:NonNegativeFloat): Portfolio
   }
 `;
 

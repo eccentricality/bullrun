@@ -22,7 +22,8 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 5,
-  }
+  },
+  friends: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 },
   {
     timestamps: {

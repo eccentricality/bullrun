@@ -5,6 +5,14 @@ const portfolioSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+    totalCash: {
+        type: Number,
+        require: true
+    },
+    totalAssetValue: {
+        type: Number,
+        require: true
+    },
     assets: [{ type: Schema.Types.ObjectId, ref: 'Asset' }]
 },
     {
