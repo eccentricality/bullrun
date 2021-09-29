@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 
 import ThoughtList from '../components/ThoughtList';
 import ThoughtForm from '../components/ThoughtForm';
-import Trends from './Trends';
+import GoogleTrends from './GoogleTrends';
 
 import { QUERY_THOUGHTS } from '../utils/queries';
 
@@ -33,7 +33,18 @@ const Blog = () => {
       </div>
       <div>
         GOOGLE TRENDS
-        <Trends />
+        <div id="widget">
+        <GoogleTrends
+          type="TIMESERIES"
+          keyword="Chicken McNuggets"
+          url="https://ssl.gstatic.com/trends_nrtr/2051_RC11/embed_loader.js"
+        />
+        <GoogleTrends
+          type="GEO_MAP"
+          keyword="Celine Dion"
+          url="https://ssl.gstatic.com/trends_nrtr/2051_RC11/embed_loader.js"
+        />
+      </div>
       </div>
     </main>
   );
