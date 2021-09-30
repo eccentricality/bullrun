@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import Auth from '../../utils/auth';
+import './index.css';
 
 const Header = () => {
   const logout = (event) => {
@@ -29,10 +29,10 @@ const Header = () => {
     // If logged out show login controls
     return (
       <>
-        <Link className="btn btn-lg btn-info m-2" to="/login">
+        <Link className="" to="/login">
           Login
         </Link>
-        <Link className="btn btn-lg btn-light m-2" to="/signup">
+        <Link className="" to="/signup">
           Signup
         </Link>
       </>
@@ -40,15 +40,15 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-dark text-light mb-4 py-3 flex-row align-center">
+    <header className="bg-light text-dark mb-4 py-3 flex-row align-center">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
-          <Link className="text-light" to="/">
-            <h1 className="m-0">Fun User List</h1>
+          <Link className="text-dark" to="/">
+            <h1 className="title">Bullrun</h1>
           </Link>
         </div>
         <div>
-          <p className="m-0 text-center">Simple App to View Users.</p>
+          <p className="m-0 text-center">Stock Market Trading Simulator</p>
           {renderControls()}
         </div>
       </div>

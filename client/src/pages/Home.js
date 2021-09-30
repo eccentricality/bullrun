@@ -1,67 +1,22 @@
-// Node Modules
 import React from 'react';
 import { useQuery } from '@apollo/client';
-// Utilities
 import Auth from '../utils/auth';
 import { QUERY_USERS } from '../utils/queries';
-// Components
-import UserList from '../components/UserList';
-
-// import ThoughtList from '../components/ThoughtList';
-// import ThoughtForm from '../components/ThoughtForm';
-
-// import { QUERY_THOUGHTS } from '../utils/queries';
+import Header from '../components/Header';
+import Ticker from '../components/Ticker';
+import SideNav from '../components/SideNav';
+import Banner from '../components/Banner';
+import Footer from '../components/Footer';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_USERS);
-  const users = data?.users || [];
-  const thoughts = data?.thoughts || [];
-
-  const renderUserList = () => {
-    if (loading) {
-      return <h2>Loading...</h2>
-    } else {
-      return <UserList users={users} title="List of Users" />
-    }
-  } 
 
   const renderUsername = () => {
     if (!Auth.loggedIn()) return null;
     return Auth.getProfile().data.username;
   }
-
   return (
     <main>
-      <div className="flex-row justify-center">
-        <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
-        >
-          {renderUsername()}
-        </div>
-        <div className="col-12 col-md-8 mb-3">
-          {renderUserList()}
-        </div>
-      </div>
-
-      {/* <div className="flex-row justify-center">
-        <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
-        >
-          <ThoughtForm />
-        </div>
-        <div className="col-12 col-md-8 mb-3">
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <ThoughtList
-              thoughts={thoughts}
-              title="Some Feed for Thought(s)..."
-            />
-          )}
-        </div>
-      </div> */}
+      <Banner/>
     </main>
   );
 };
