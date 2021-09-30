@@ -1,7 +1,7 @@
 /* (A) FIXED WRAPPER */
 .hwrap {
     overflow: hidden; /* HIDE SCROLL BAR */
-    background: #eee;
+    background: #5d7797;
   }
    
   /* (B) MOVING TICKER WRAPPER */
@@ -14,6 +14,8 @@
     box-sizing: border-box;
     padding: 10px;
     text-align: center;
+    background: #fff;
+    margin: 10px;
   }
    
   /* (D) ANIMATION - MOVE ITEMS FROM RIGHT TO LEFT */

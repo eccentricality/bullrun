@@ -1,3 +1,7 @@
 .title {
     text-align: center;
+    color: #5bc0be;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: .2em;
 }
