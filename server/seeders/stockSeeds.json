@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Apple",
+    "ticker": "AAPL",
+    "previousClosingPrice": 123.43,
+    "updatedToday": false
+  },
+  {
+    "name": "Google",
+    "ticker": "GOOG",
+    "previousClosingPrice": 123.43,
+    "updatedToday": false
+  },
+  {
+    "name": "Facebook",
+    "ticker": "FB",
+    "previousClosingPrice": 123.43,
+    "updatedToday": false
+  },
+  {
+    "name": "Amazon",
+    "ticker": "AMZN",
+    "previousClosingPrice": 123.43,
+    "updatedToday": false
+  },
+  {
+    "name": "Netflix",
+    "ticker": "NFLX",
+    "previousClosingPrice": 123.43,
+    "updatedToday": false
+  },
+  {
+    "name": "Tesla",
+    "ticker": "TSLA",
+    "previousClosingPrice": 123.43,
+    "updatedToday": false
+  },
+  {
+    "name": "Microsoft",
+    "ticker": "MSFT",
+    "previousClosingPrice": 123.43,
+    "updatedToday": false
+  },
+  {
+    "name": "Nvidia",
+    "ticker": "NVDA",
+    "previousClosingPrice": 123.43,
+    "updatedToday": false
+  }
+]

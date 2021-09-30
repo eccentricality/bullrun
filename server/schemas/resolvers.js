@@ -1,12 +1,13 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
-const { User, Asset, Portfolio } = require('../models');
+const { User, Asset, Portfolio, Stock } = require('../models');
 const { DateTimeResolver } = require('graphql-scalars');
 
 const resolvers = {
   DateTime: DateTimeResolver,
   Query: {
     users: async () => {
+      console.log(User.find());
       return User.find();
     },
     user: async (_, args) => {

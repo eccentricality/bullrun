@@ -7,6 +7,8 @@ const path = require('path');
 const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./utils/auth');
 
+const { updateStocks } = require('./utils/updateStocks');
+
 const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
@@ -37,3 +39,8 @@ db.once('open', () => {
     console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
   });
 });
+
+//run  every 24 hours
+setInterval(function () {
+  updateStocks();
+}, 120000);
