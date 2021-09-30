@@ -41,6 +41,18 @@ const typeDefs = gql`
     user: User
   }
 
+  type Trend {
+    mid: ID
+    title: String
+    type: String
+  }
+  
+  input TrendInput {
+    geo: String! = "US"
+    keyword: String = "Finance"
+    category: String = "Finance"
+  }
+
   type Query {
     users: [User]
     user(id: ID!): User
@@ -49,6 +61,7 @@ const typeDefs = gql`
     asset(id: ID!): Asset
     portfolios:[Portfolio]
     portfolio(id: ID!): Portfolio
+    googleTrends(input: TrendInput): [Trend]
   }
 
   type Mutation {

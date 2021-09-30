@@ -1,0 +1,19 @@
+{
+  "default": {
+    "topics": [
+      { "mid": "/m/0414j6", "title": "Back to School", "type": "1986 film" },
+      { "mid": "/m/068pw8", "title": "Back to school", "type": "Topic" },
+      {
+        "mid": "/m/04vwgn",
+        "title": "Fight Back to School",
+        "type": "1991 film"
+      },
+      { "mid": "/m/05357_", "title": "Tax holiday", "type": "Holiday" },
+      {
+        "mid": "/m/02pb6kt",
+        "title": "Fight Back to School II",
+        "type": "1992 film"
+      }
+    ]
+  }
+}

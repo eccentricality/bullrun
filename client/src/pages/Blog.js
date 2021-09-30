@@ -36,12 +36,7 @@ const Blog = () => {
         <div id="widget">
         <GoogleTrends
           type="TIMESERIES"
-          keyword="Chicken McNuggets"
-          url="https://ssl.gstatic.com/trends_nrtr/2051_RC11/embed_loader.js"
-        />
-        <GoogleTrends
-          type="GEO_MAP"
-          keyword="Celine Dion"
+          keyword="Stocks"
           url="https://ssl.gstatic.com/trends_nrtr/2051_RC11/embed_loader.js"
         />
       </div>

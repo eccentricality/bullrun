@@ -2,6 +2,7 @@ const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 const { User, Asset, Portfolio } = require('../models');
 const { DateTimeResolver } = require('graphql-scalars');
+const googleTrends = require('google-trends-api');
 
 const resolvers = {
   DateTime: DateTimeResolver,
@@ -23,6 +24,16 @@ const resolvers = {
     },
     portfolios: async () => {
       return await Portfolio.find();
+    },
+    googleTrends: async (_, { input }) => {
+      try {
+        console.log('INPUT IS', input)
+        const results = await googleTrends.realTimeTrends(input)
+        console.log('These results are awesome', JSON.parse(results));
+        return JSON.parse(results).default.topics;
+      } catch(err) {
+        console.error('Oh no there was an error', err);
+      }
     }
   },
 
