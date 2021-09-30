@@ -27,16 +27,14 @@ const resolvers = {
     },
     googleTrends: async (_, { input }) => {
       try {
-        console.log('INPUT IS', input)
         const results = await googleTrends.realTimeTrends(input)
-        console.log('These results are awesome', JSON.parse(results));
-        return JSON.parse(results).default.topics;
+        console.log('These results are awesome', JSON.parse(results).storySummaries.trendingStories);
+        return JSON.parse(results).storySummaries.trendingStories;
       } catch(err) {
         console.error('Oh no there was an error', err);
       }
     }
   },
-
   Mutation: {
     addUser: async (_, { username, email, password }) => {
       const user = await User.create({ username, email, password });
