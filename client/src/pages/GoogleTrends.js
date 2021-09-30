@@ -11,7 +11,7 @@ export default function GoogleTrends({ type, keyword, url }) {
         headers: {
           "x-rapidapi-host": "google-trends-related-search.p.rapidapi.com",
           "x-rapidapi-key":
-            "b77d1cca69mshb730bd2ea0e27e0p1b9cc9jsnfd64c00c7ea9",
+            process.ENV.TRENDKEY,
         },
       }
     )
