@@ -26,6 +26,16 @@ const typeDefs = gql`
     updated_at: DateTime
     }
 
+  type Stock {
+    _id: ID
+    name: String
+    ticker: String
+    previousClosingPrice: NonNegativeFloat
+    updatedToday: Boolean
+    created_at: DateTime
+    updated_at: DateTime
+  }
+
   type Portfolio {
     _id: ID
     user: User
