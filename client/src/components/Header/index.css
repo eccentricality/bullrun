@@ -3,5 +3,16 @@
     color: #5bc0be;
     font-style: italic;
     font-weight: bold;
-    margin-top: .2em;
+    margin: .1em;
+}
+
+.subtitle {
+    text-align: center;
+    margin-top: 0;
+}
+
+.header {
+    width: fit-content;
+    height: fit-content;
+    background-image: '../../logo.png';
 }

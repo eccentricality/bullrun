@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "@graphql-tools/schema": "^8.2.0",
+    "axios": "^0.21.4",
+    "config": "^3.3.6",
     "google-trends-api": "^4.9.2",
     "graphql": "^15.6.0",
     "graphql-scalars": "^1.10.1",

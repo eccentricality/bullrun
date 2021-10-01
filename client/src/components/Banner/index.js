@@ -11,7 +11,7 @@ export default function Banner() {
 
     async function getData() {
       const res = await fetch(
-        `https://api.polygon.io/v2/reference/news?limit=30&order=desc&sort=published_utc&apiKey=${apiKey}`
+        `https://api.polygon.io/v2/reference/news?limit=100&order=desc&sort=published_utc&apiKey=${apiKey}`
       );
       const data = await res.json();
       // store data into variables

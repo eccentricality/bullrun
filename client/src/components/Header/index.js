@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import './index.css';
+import '../../logo.png';
 
 const Header = () => {
   const logout = (event) => {
@@ -43,12 +44,12 @@ const Header = () => {
     <header className="bg-light text-dark mb-4 py-3 flex-row align-center">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
-          <Link className="text-dark" to="/">
+          <Link className="header" to="/">
             <h1 className="title">Bullrun</h1>
+            <p className="subtitle">Stock Market Trading Simulator</p>
           </Link>
         </div>
         <div>
-          <p className="m-0 text-center">Stock Market Trading Simulator</p>
           {renderControls()}
         </div>
       </div>

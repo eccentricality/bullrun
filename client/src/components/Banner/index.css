@@ -2,13 +2,18 @@
 .hwrap {
     overflow: hidden; /* HIDE SCROLL BAR */
     background: #5d7797;
-  }
+    max-width: fit-content;
+    padding: 10px;
+}
    
-  /* (B) MOVING TICKER WRAPPER */
-  .hmove { display: flex; }
+/* (B) MOVING TICKER WRAPPER */
+.hmove {
+    display: flex;
+    max-width: fit-content;
+}
   
-  /* (C) ITEMS - INTO A LONG HORIZONTAL ROW */
-  .hitem {
+/* (C) ITEMS - INTO A LONG HORIZONTAL ROW */
+.hitem {
     flex-shrink: 0;
     width: 100%;
     box-sizing: border-box;
@@ -16,19 +21,23 @@
     text-align: center;
     background: #fff;
     margin: 10px;
-  }
+    color: black;
+    max-width: fit-content;
+}
    
-  /* (D) ANIMATION - MOVE ITEMS FROM RIGHT TO LEFT */
-  /* 4 ITEMS -400%, CHANGE THIS IF YOU ADD/REMOVE ITEMS */
-  @keyframes tickerh {
+/* (D) ANIMATION - MOVE ITEMS FROM RIGHT TO LEFT */
+/* 10 ITEMS -1000%, CHANGE THIS IF YOU ADD/REMOVE ITEMS */
+@keyframes banner {
     0% { transform: translate3d(100%, 0, 0); }
-    100% { transform: translate3d(-3000%, 0, 0); }
-  }
-  .hmove { animation: tickerh linear 180s infinite; }
-  .hmove:hover { animation-play-state: paused; }
+    100% { transform: translate3d(-10000%, 0, 0); }
+}
+.hmove { animation: banner linear 600s infinite; }
+.hmove:hover { animation-play-state: paused; }
 
 .newsTitle {
     font-weight: bold;
+    padding-bottom: 1em;
+    max-width: 600px;
 }
 
 .newsImage {
