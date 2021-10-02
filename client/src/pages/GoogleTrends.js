@@ -1,8 +1,10 @@
 import { React, useEffect } from "react";
 import ReactDOM from "react-dom";
 import Script from "react-load-script";
+import Trends from "../components/Trends/index.js";
 
 export default function GoogleTrends({ type, keyword, url }) {
+
   useEffect(() => {
     fetch(
       "https://google-trends-related-search.p.rapidapi.com/?keyword=finance&timerange=last1hour&geo=US",
@@ -10,8 +12,8 @@ export default function GoogleTrends({ type, keyword, url }) {
         method: "GET",
         headers: {
           "x-rapidapi-host": "google-trends-related-search.p.rapidapi.com",
-          "x-rapidapi-key":
-            process.ENV.TRENDKEY,
+          "x-rapidapi-key": "b77d1cca69mshb730bd2ea0e27e0p1b9cc9jsnfd64c00c7ea9:"
+            // process.ENV.TRENDKEY,
         },
       }
     )
@@ -40,7 +42,12 @@ export default function GoogleTrends({ type, keyword, url }) {
   };
 
   const renderGoogleTrend = (_) => {
-    return <Script url={url} onLoad={handleScriptLoad} />;
+    return (
+    <>
+      {/* <Script url={url} onLoad={handleScriptLoad} /> */}
+      {/* <Trends trend = {data}/> */}
+    </>
+    );
   };
 
   return <div className="googleTrend">{renderGoogleTrend()}</div>;

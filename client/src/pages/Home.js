@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import Auth from '../utils/auth';
-import { QUERY_USERS } from '../utils/queries';
+import { QUERY_USERS, QUERY_GOOGLE_TRENDS } from '../utils/queries';
 import Header from '../components/Header';
 import Ticker from '../components/Ticker';
 import SideNav from '../components/SideNav';
