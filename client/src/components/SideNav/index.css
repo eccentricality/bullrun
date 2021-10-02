@@ -1,0 +1,34 @@
+#margin {
+    width: 90% !important;
+    max-width: 90% !important;
+}
+
+.margin-right {
+    margin-right: 10px;
+}
+
+.margin-left {
+    margin-left: 10px;
+}
+
+.margin-bottom {
+    margin-bottom: 1.5rem;
+}
+
+.margin-top {
+    margin-top: 2.5rem;
+}
+
+.font {
+    color: black !important;
+}
+
+.test {
+    background-color: white !important;
+    border-style: none !important;
+}
+
+.boldUnderline {
+    font-weight: bold;
+    text-decoration: underline
+}
