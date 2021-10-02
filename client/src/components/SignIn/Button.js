@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Render from './Render'
-import './styles/signup.css'
+
 
 function Button() {
 
@@ -21,15 +21,15 @@ function Button() {
 
     return (
         <>
-            <div class="center-align margin-bottom margin-top">
-                <a
-                    className={`waves-effect ${loginColor ? "green accent-3" : "red accent-2"} btn center-align margin-right`}
-                    href="#a" onClick={myLogin}>login</a>
-                <a
+            <div className="center-align margin-bottom">
+                <button
+                    className={`waves-effect ${loginColor ? "green accent-3" : "red accent-2"} btn center-align margin-right margin-top`}
+                    onClick={myLogin}>login</button>
+                <button
                     className={`waves-effect ${signupColor ? "green accent-3" : "red accent-2"} btn center-align margin-right`}
-                    href="#a" onClick={mySignUp}>signup</a>
+                    onClick={mySignUp}>signup</button>
             </div>
-            <Render  loginColor={loginColor}/>
+            <Render loginColor={loginColor} />
         </>
     );
 }

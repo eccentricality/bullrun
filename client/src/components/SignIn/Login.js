@@ -1,5 +1,7 @@
 import React from 'react';
-import './styles/signup.css'
+import { Link } from 'react-router-dom';
+
+
 
 function Login() {
     // The return statement contains something called "JSX"
@@ -7,46 +9,46 @@ function Login() {
     // Expressions in JSX should be placed in curly braces {}
     return (
         <>
-            <div class="row container">
-                <form class="col s12" id="login-form">
+            <div className="row ">
+                <form className="col s12" id="login-form">
 
-                    <div class="row z-depth-3 border-radius col l6 offset-l3 m8 offset-m2 s10 offset-s1 backgroundWhite">
+                    <div className="row z-depth-3 border-radius col l6 offset-l3 m8 offset-m2 s10 offset-s1 test text">
 
-                        <div class="row">
-                            <div class="center-align">
-                                <h4>Welcome back!</h4>
+                        <div className="row">
+                            <div className="center-align">
+                                <h4 classNameName="text">Welcome back!</h4>
                             </div>
                         </div>
 
-                        <div class="row ">
-                            <div class="input-field col l6 offset-l3 m8 offset-m2 s10 offset-s1">
-                                <input placeholder="Email" id="email-login" type="text" class="validate"></input>
+                        <div className="row ">
+                            <div className="input-field col l6 offset-l3 m8 offset-m2 s10 offset-s1">
+                                <input placeholder="Email" id="email-login" type="text" className="validate"></input>
                                 <label for="usernameEmail"></label>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="input-field col l6 offset-l3 m8 offset-m2 s10 offset-s1">
-                                <input placeholder="Password" id="password-login" type="password" class="validate"></input>
+                        <div className="row">
+                            <div className="input-field col l6 offset-l3 m8 offset-m2 s10 offset-s1">
+                                <input placeholder="Password" id="password-login" type="password" className="validate"></input>
                                 <label for="password"></label>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="center-align">
+                        <div className="row">
+                            <div className="center-align">
                                 <a href="#a">Forget your username?</a>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="center-align">
+                        <div className="row">
+                            <div className="center-align">
                                 <a href="#a">Forget your password?</a>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="center-align">
-                                <button class="waves-effect waves-light btn" type="submit" name="action">Login!</button>
+                        <div className="row">
+                            <div className="center-align">
+                            <Link className="waves-effect waves-light btn" type="submit" name="action" to="/profile">Login!</Link>
                             </div>
                         </div>
 
