@@ -15,8 +15,10 @@ import Profile from './pages/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Blog from './pages/Blog';
+import Trends from './components/Trends';
 
 import './materialize.css';
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -66,6 +68,9 @@ function App() {
             </Route>
             <Route exact path="/users/:id">
               <Profile />
+            </Route>
+            <Route exact path="/trends">
+              <Trends />
             </Route>
           </div>
           <Footer />
