@@ -19,5 +19,13 @@
 }
 
 .margin-top {
-    margin-top: 1.5rem;
+    margin-top: 0px !important;
+}
+
+.test {
+    background-color: aliceblue !important;
+}
+
+.text {
+    color: black !important;
 }

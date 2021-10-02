@@ -30,11 +30,8 @@ const Header = () => {
     // If logged out show login controls
     return (
       <>
-        <Link className="btn" to="/login">
-          Login
-        </Link>
-        <Link className="btn" to="/signup">
-          Signup
+        <Link className="btn" to="/signin">
+          Signin
         </Link>
       </>
     )
