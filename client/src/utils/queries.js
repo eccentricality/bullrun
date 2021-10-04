@@ -40,3 +40,22 @@ export const QUERY_THOUGHTS = gql`
     }
   }
 `;
+
+export const QUERY_GOOGLE_TRENDS = gql`
+  query googleTrends($input: TrendInput!) {
+    googleTrends(input: $input) {
+      id
+      title
+      entityNames
+      shareUrl
+      articles {
+        title
+      }
+      image {
+        newsUrl
+        source
+        imgUrl
+      }
+    }
+  }
+`;

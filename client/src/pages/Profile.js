@@ -64,7 +64,7 @@ const Profile = () => {
   }
 
   return (
-    <div>
+    <main>
       <div className="flex-row justify-center mb-3">
         <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
           Viewing {id ? `${user.username}'s` : 'your'} profile.
@@ -72,7 +72,7 @@ const Profile = () => {
         {renderCurrentUserInfo()}
         {renderUserList()}
       </div>
-    </div>
+    </main>
   );
 };
 

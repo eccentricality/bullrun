@@ -9,10 +9,20 @@
 .subtitle {
     text-align: center;
     margin-top: 0;
+    color: #039be5;
 }
 
-.header {
-    width: fit-content;
-    height: fit-content;
+.logo {
     background-image: '../../logo.png';
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+@media only screen and (max-width : 992px) {
+    header, main, footer {
+        padding-left: 0;
+    }
 }

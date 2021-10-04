@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 
-function Login() {
+function StockForm() {
     // The return statement contains something called "JSX"
     // JSX is a syntax extension to Javascript that allows us to write HTML inside Javascript
     // Expressions in JSX should be placed in curly braces {}
@@ -61,4 +61,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default StockForm;
