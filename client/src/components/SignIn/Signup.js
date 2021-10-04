@@ -15,7 +15,7 @@ function Signup() {
     email: '',
     password: '',
   });
-  const [addProfile, { error, data }] = useMutation(ADD_USER);
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -33,11 +33,11 @@ function Signup() {
     console.log(formState);
 
     try {
-      const { data } = await addProfile({
-        variables: { ...formState },
+      const { data } = await addUser({
+        variables: formState,
       });
 
-      Auth.login(data.addProfile.token);
+      Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
@@ -121,7 +121,7 @@ function Signup() {
 
                 <div className="row">
                   <div className="center-align">
-                    <Link className="waves-effect waves-light btn" type="submit" name="action" to='/portfolio'>Create account</Link>
+                    <button className="waves-effect waves-light btn" type="submit" name="action" >Create account</button>
                   </div>
                 </div>
               </form>

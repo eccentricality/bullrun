@@ -23,7 +23,7 @@ import React, { useState, useRef } from 'react';
 
 
 
-function StockForm() {
+function Stockform() {
     const data = {
         "ticker": "AAPL",
         "queryCount": 1,
@@ -63,7 +63,7 @@ function StockForm() {
 
                         <div className="row">
                             <div className="center-align">
-                                <h4 classNameName="text">Stock search</h4>
+                                <h4 className="text">Stock search</h4>
                             </div>
                         </div>
 
@@ -92,4 +92,4 @@ function StockForm() {
     );
 }
 
-export default StockForm;
+export default Stockform;

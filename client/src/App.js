@@ -15,7 +15,7 @@ import Footer from './components/Footer';
 import Blog from './pages/Blog';
 import Trends from './components/Trends';
 import Signin from './components/SignIn/Signin'
-import StockForm from './components/StockForm/Stockform';
+import Stockform from './components/Stockform/StockForm';
 import SideNav from './components/SideNav';
 import './materialize.css';
 
@@ -67,7 +67,7 @@ function App() {
               <Profile />
             </Route>
             <Route exact path="/portfolio">
-              <StockForm />
+              <Stockform />
             </Route>
           </div>
           <Footer />
