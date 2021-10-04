@@ -15,12 +15,8 @@ import Footer from './components/Footer';
 import Blog from './pages/Blog';
 import Trends from './components/Trends';
 import Signin from './components/SignIn/Signin'
-<<<<<<< Updated upstream
-import Sidenav from './components/Sidenav';
-
-=======
 import StockForm from './components/StockForm/Stockform';
->>>>>>> Stashed changes
+import SideNav from './components/SideNav';
 import './materialize.css';
 
 // Construct our main GraphQL API endpoint
@@ -51,28 +47,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <Sidenav />
+        <SideNav />
         <div className="flex-column justify-space-between min-100-vh">
           <Header />
-<<<<<<< Updated upstream
-            <main className="container">
-                <Route exact path="/">
-                  <Home />
-                </Route>
-                <Route exact path="/profile">
-                  <Profile />
-                </Route>
-                <Route exact path="/blog">
-                  <Blog />
-                </Route>
-                <Route exact path="/trends">
-                  <Trends />
-                </Route>
-                <Route exact path="/signin">
-                  <Signin />
-                </Route>
-            </main>
-=======
           <div className="container">
             <Route exact path="/">
               <Home />
@@ -93,7 +70,6 @@ function App() {
               <StockForm />
             </Route>
           </div>
->>>>>>> Stashed changes
           <Footer />
         </div>
       </Router>

@@ -3,7 +3,7 @@ const axios = require('axios').default;
 const config = require('config');
 const { User, Asset, Portfolio, Stock } = require('../models');
 
-const apiKey = config.get('polygonKey');
+const apiKey = process.env.polygonKey || config.get('polygonKey');
 
 
 
@@ -43,6 +43,12 @@ module.exports = {
             console.log(`${toBeUpdatedStocks[counter]} has been updated`);
             counter++;
         }, 13000);
+
+    },
+
+    externalGetPrice: async function (ticker) {
+        const data = await getPrice(ticker);
+        return data;
     }
 
 }
