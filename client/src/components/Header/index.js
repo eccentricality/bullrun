@@ -33,6 +33,9 @@ const Header = () => {
         <Link className="navlink" to="/signin">
           Account Sign-in
         </Link>
+        <Link className="btn" to="/portfolio">
+          Portfolio
+        </Link>
       </>
     )
   };
