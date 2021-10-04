@@ -3,6 +3,7 @@ const { signToken } = require('../utils/auth');
 const { User, Asset, Portfolio, Stock } = require('../models');
 const { DateTimeResolver } = require('graphql-scalars');
 const googleTrends = require('google-trends-api');
+const { externalGetPrice } = require('../utils/updateStocks');
 
 const resolvers = {
   DateTime: DateTimeResolver,
@@ -26,19 +27,32 @@ const resolvers = {
     portfolios: async () => {
       return await Portfolio.find();
     },
+
+    portfolio: async (_, { userId }, context) => {
+      const user = await User.findOne({ _id: userId });
+      return await Portfolio.findOne({ user: user })
+        .populate('assets', ['name', 'ticker', 'quantity', 'purchasePrice', 'created_at'])
+    },
+
+    currentStockPrice: async (_, { ticker }) => {
+      const data = await externalGetPrice(ticker);
+      return [data.ticker, data.results[0].c];
+
+    },
+
     googleTrends: async (_, { input }) => {
       try {
         const results = await googleTrends.realTimeTrends(input)
         console.log('These results are awesome', JSON.parse(results).storySummaries.trendingStories);
         return JSON.parse(results).storySummaries.trendingStories;
-      } catch(err) {
+      } catch (err) {
         console.error('Oh no there was an error', err);
       }
     }
   },
   Mutation: {
-    addUser: async (_, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (_, { username, name, email, password }) => {
+      const user = await User.create({ username, name, email, password });
       const token = signToken(user);
       return { token, user };
     },
@@ -65,16 +79,29 @@ const resolvers = {
       return portfolio;
     },
     //This mutation is used to add an asset to a portfolio
-    addAsset: async (_, { userId, name, ticker, quantity, purchasePrice }, context) => {
+    addAsset: async (_, { userId, name, ticker, quantity }, context) => {
+      //get price of stock
+      const purchasePrice = await externalGetPrice(ticker).results[0].c;
       //first find the user to get portfolio
       const newAsset = { userId, name, ticker, quantity, purchasePrice };
       const user = await User.findOne({ _id: userId });
       const asset = await Asset.create(newAsset);
       const portfolio = await Portfolio.findOne({ user: user });
       const portfolioTotalCash = portfolio.totalCash;
-      const updatedPortfolio = await Portfolio.findOneAndUpdate({ _id: portfolio._id }, { totalCash: (portfolioTotalCash - (quantity * purchasePrice)), totalAssetValue: (quantity * purchasePrice), $push: { assets: asset } });
+      const portfolioTotalAssets = portfolio.totalAssetValue
+      const updatedPortfolio = await Portfolio.findOneAndUpdate(
+        {
+          _id: portfolio._id
+        },
+        {
+          totalCash: (portfolioTotalCash - (quantity * purchasePrice)),
+          totalAssetValue: (portfolioTotalAssets + (quantity * purchasePrice)),
+          $push: { assets: asset }
+        });
 
-      return await Portfolio.findOne({ _id: updatedPortfolio._id });
+
+      return await Portfolio.findOne({ _id: updatedPortfolio._id })
+        .populate('assets', ['name', 'ticker', 'quantity', 'purchasePrice']);
     }
   }
 };
