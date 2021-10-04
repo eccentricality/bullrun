@@ -4,7 +4,7 @@ import Auth from '../utils/auth';
 import { QUERY_USERS, QUERY_GOOGLE_TRENDS } from '../utils/queries';
 import Header from '../components/Header';
 import Ticker from '../components/Ticker';
-import SideNav from '../components/SideNav';
+import Sidenav from '../components/Sidenav';
 import Banner from '../components/Banner';
 import Footer from '../components/Footer';
 
@@ -15,9 +15,9 @@ const Home = () => {
     return Auth.getProfile().data.username;
   }
   return (
-    <main>
+    <div>
       <Banner/>
-    </main>
+    </div>
   );
 };
 

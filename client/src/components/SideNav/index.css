@@ -1,34 +1,13 @@
-#margin {
-    width: 90% !important;
-    max-width: 90% !important;
+.sidenav {
+  width: 200px;
 }
 
-.margin-right {
-    margin-right: 10px;
-}
-
-.margin-left {
-    margin-left: 10px;
-}
-
-.margin-bottom {
-    margin-bottom: 1.5rem;
-}
-
-.margin-top {
-    margin-top: 2.5rem;
-}
-
-.font {
-    color: black !important;
-}
-
-.test {
-    background-color: white !important;
-    border-style: none !important;
-}
-
-.boldUnderline {
-    font-weight: bold;
-    text-decoration: underline
+.sidenav li>a {
+  color: rgba(0,0,0,0.87);
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 1em;
 }

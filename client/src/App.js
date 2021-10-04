@@ -15,10 +15,9 @@ import Footer from './components/Footer';
 import Blog from './pages/Blog';
 import Trends from './components/Trends';
 import Signin from './components/SignIn/Signin'
-
+import Sidenav from './components/Sidenav';
 
 import './materialize.css';
-
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -48,28 +47,26 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+        <Sidenav />
         <div className="flex-column justify-space-between min-100-vh">
           <Header />
-          <div className="container">
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/signin">
-              <Signin />
-            </Route>
-            <Route exact path="/me">
-              <Profile />
-            </Route>
-            <Route exact path="/blog">
-              <Blog />
-            </Route>
-            <Route exact path="/users/:id">
-              <Profile />
-            </Route>
-            <Route exact path="/trends">
-              <Trends />
-            </Route>
-          </div>
+            <main className="container">
+                <Route exact path="/">
+                  <Home />
+                </Route>
+                <Route exact path="/profile">
+                  <Profile />
+                </Route>
+                <Route exact path="/blog">
+                  <Blog />
+                </Route>
+                <Route exact path="/trends">
+                  <Trends />
+                </Route>
+                <Route exact path="/signin">
+                  <Signin />
+                </Route>
+            </main>
           <Footer />
         </div>
       </Router>

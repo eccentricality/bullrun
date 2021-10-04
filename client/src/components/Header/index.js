@@ -15,13 +15,13 @@ const Header = () => {
     if (Auth.loggedIn()) {
       return (
         <>
-          <Link className="btn" to="/profile">
+          <Link className="navlink" to="/profile">
             {Auth.getProfile().data.username}'s Profile
           </Link>
-          <Link className="btn" to="/blog">
+          <Link className="navlink" to="/blog">
           {Auth.getProfile().data.username}'s Blog
           </Link>
-          <button className="btn" onClick={logout}>
+          <button className="navlink" onClick={logout}>
             Logout
           </button>
         </>
@@ -30,8 +30,8 @@ const Header = () => {
     // If logged out show login controls
     return (
       <>
-        <Link className="btn" to="/signin">
-          Signin
+        <Link className="navlink" to="/signin">
+          Account Sign-in
         </Link>
       </>
     )
