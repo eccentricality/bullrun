@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './index.css';
 
-export default function Sidenav() {
+const Sidenav = () => {
     return (
         <ul className="sidenav sidenav-fixed">
             <li>
@@ -56,3 +56,5 @@ export default function Sidenav() {
         </ul>
     );
 };
+
+export default Sidenav;
