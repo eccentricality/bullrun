@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './index.css';
 
-const Sidenav = () => {
+const SideNav = () => {
     return (
         <ul className="sidenav sidenav-fixed">
             <li>
@@ -57,4 +57,4 @@ const Sidenav = () => {
     );
 };
 
-export default Sidenav;
+export default SideNav;

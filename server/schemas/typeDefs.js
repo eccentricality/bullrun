@@ -18,7 +18,6 @@ const typeDefs = gql`
 
   type Asset {
     _id: ID
-    name: String
     ticker: String
     quantity: Int
     purchasePrice: NonNegativeFloat
@@ -28,7 +27,6 @@ const typeDefs = gql`
 
   type Stock {
     _id: ID
-    name: String
     ticker: String
     previousClosingPrice: NonNegativeFloat
     updatedToday: Boolean
@@ -91,7 +89,7 @@ const typeDefs = gql`
     addUser(username: String, name: String, email: String, password: String): Auth
     login(email: String, password: String): Auth
     addPortfolio(userId: ID): Portfolio
-    addAsset(userId: ID, name:String, ticker:String, quantity:Int, purchasePrice:NonNegativeFloat): Portfolio
+    addAsset(userId: ID, ticker:String, quantity:Int, purchasePrice:NonNegativeFloat): Portfolio
   }
 `;
 

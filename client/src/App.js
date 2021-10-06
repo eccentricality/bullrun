@@ -15,8 +15,8 @@ import Footer from './components/Footer';
 import Blog from './pages/Blog';
 import Trends from './components/Trends';
 import Signin from './components/SignIn/Signin'
-import Stockform from './components/StockForm/StockForm';
-import Sidenav from './components/Sidenav';
+import Stockform from './components/Stockform/StockForm';
+import SideNav from './components/SideNav';
 import './materialize.css';
 
 // Construct our main GraphQL API endpoint
@@ -47,7 +47,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <Sidenav />
+        <SideNav />
         <div className="flex-column justify-space-between min-100-vh">
           <Header />
           <div className="container">

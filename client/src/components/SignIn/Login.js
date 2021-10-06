@@ -91,7 +91,7 @@ function Login() {
 
                             <div className="row">
                                 <div className="center-align">
-                                    <button className="waves-effect waves-light btn" type="submit" name="action" to="/portfolio">Login!</button>
+                                    <button className="waves-effect waves-light btn" type="submit" name="action">Login!</button>
                                 </div>
                             </div>
 

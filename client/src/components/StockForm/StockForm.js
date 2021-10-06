@@ -1,57 +1,52 @@
-import React, { useState, useRef } from 'react';
-
-/*
-{
-    "ticker": "AAPL",
-    "queryCount": 1,
-    "resultsCount": 1,
-    "adjusted": true,
-    "results": [
-     {
-      "T": "AAPL",
-      "v": 94606681,
-      "vw": 141.1056,
-      "o": 141.9,
-      "c": 142.65,
-      "h": 142.92,
-      "l": 139.1101,
-      "t": 1633118400000,
-      "n": 730084
-     }]}
-    */
-
+import React, { useState } from 'react';
+import Buyform from './Buyform'
+import './stockform.css'
 
 
 
 function Stockform() {
-    const data = {
-        "ticker": "AAPL",
-        "queryCount": 1,
-        "resultsCount": 1,
-        "adjusted": true,
-        "results": [
-         {
-          "T": "AAPL",
-          "v": 94606681,
-          "vw": 141.1056,
-          "o": 141.9,
-          "c": 142.65,
-          "h": 142.92,
-          "l": 139.1101,
-          "t": 1633118400000,
-          "n": 730084
-         }]}
 
-    const inputRef = useRef();
+    // const inputRef = useRef();
+    // stock.results[0].T, stock.results[0].c, stock.results[0].c - stock.results[0].o
+    // difference: rounded(data.results[0].c - data.results[0].o)
 
-    const [ticker, setTicker] = useState('test');
+    const [ticker, setTicker] = useState('');
     const [stock, setStock] = useState({});
 
-    const handleSearch = (event, data) => {
+    const rounded = (num1, num2) => {
+        let number = num1 - num2
+        number = number.toFixed(2)
+        console.log(number)
+    }
+
+    // setStock({
+    //     ticker: data.results[0].T,
+    //     price: data.results[0].c,
+    //     difference: data.results[0].c - data.results[0].o
+    // })
+
+    const fetchData = (ticker, api) => {
+        fetch(`https://api.polygon.io/v2/aggs/ticker/${ticker}/prev?adjusted=true&apiKey=${api}`)
+            .then(res => res.ok && res.json())
+            .then(data => setStock({
+                ticker: data.results[0].T,
+                price: data.results[0].c,
+                difference: data.results[0].c - data.results[0].o
+            }))
+            .catch(error => (console.log(error)));
+    }
+
+    const handleSearch = async (event) => {
         event.preventDefault()
-        setStock({...stock, ticker: data.ticker, price: data.results[0].c});
-        inputRef.current.value = ''
+        const api = 'XiuFLImIzxjsT7wzsU_fYh6YnMfUt7aZ'
+        fetchData(ticker, api)
+
     };
+
+    const handleChange = (event) => {
+        const { value } = event.target;
+        setTicker(value);
+      };
 
 
     return (
@@ -69,19 +64,19 @@ function Stockform() {
 
                         <div className="row ">
                             <div className="input-field col l6 offset-l3 m8 offset-m2 s10 offset-s1">
-                                <input placeholder="ticker" id="ticker" type="text" ref={inputRef}></input>
+                                <input placeholder="ticker" id="ticker" type="text" onChange={handleChange}></input>
                                 <label for="ticker"></label>
                             </div>
                         </div>
 
                         <div className="row">
                             <div className="center-align">
-                                <button className="waves-effect waves-light btn" type="submit" name="action" onClick={(event) => handleSearch(event, data)}>Search</button>
+                                <button className="waves-effect waves-light btn" type="submit" name="action" onClick={(event) => handleSearch(event)}>Search</button>
                             </div>
                         </div>
-                        <div className="row">
-                            <div className="center-align">{ticker}</div>
-                        </div>
+
+                        <Buyform ticker={stock.ticker} price={stock.price} difference={stock.difference} />
+                        
                     </div>
 
                 </form>

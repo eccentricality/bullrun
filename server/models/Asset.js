@@ -1,21 +1,18 @@
 const { Schema, model } = require('mongoose');
 
 const assetSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
+
     ticker: {
         type: String,
-        required: true
+        required: false
     },
     quantity: {
         type: Number,
-        required: true
+        required: false
     },
     purchasePrice: {
         type: Number,
-        required: true
+        required: false
     }
 },
     {
