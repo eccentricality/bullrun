@@ -18,6 +18,7 @@ import Signin from './components/SignIn/Signin'
 import Stockform from './components/StockForm/StockForm';
 import Sidenav from './components/Sidenav';
 import './materialize.css';
+import './index.css';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
