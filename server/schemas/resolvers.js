@@ -30,8 +30,7 @@ const resolvers = {
 
     portfolio: async (_, { userId }, context) => {
       const user = await User.findOne({ _id: userId });
-      return await Portfolio.findOne({ user: user })
-        .populate('assets', ['name', 'ticker', 'quantity', 'purchasePrice', 'created_at'])
+      return await Portfolio.findOne({ user: user }).populate('assets', [, 'ticker', 'quantity', 'purchasePrice'])
     },
 
     currentStockPrice: async (_, { ticker }) => {
@@ -79,11 +78,10 @@ const resolvers = {
       return portfolio;
     },
     //This mutation is used to add an asset to a portfolio
-    addAsset: async (_, { userId, name, ticker, quantity }, context) => {
+    addAsset: async (_, { userId, ticker, quantity, purchasePrice }, context) => {
       //get price of stock
-      const purchasePrice = await externalGetPrice(ticker).results[0].c;
       //first find the user to get portfolio
-      const newAsset = { userId, name, ticker, quantity, purchasePrice };
+      const newAsset = { userId, ticker, quantity, purchasePrice };
       const user = await User.findOne({ _id: userId });
       const asset = await Asset.create(newAsset);
       const portfolio = await Portfolio.findOne({ user: user });
@@ -101,7 +99,7 @@ const resolvers = {
 
 
       return await Portfolio.findOne({ _id: updatedPortfolio._id })
-        .populate('assets', ['name', 'ticker', 'quantity', 'purchasePrice']);
+        .populate('assets', [, 'ticker', 'quantity', 'purchasePrice']);
     }
   }
 };

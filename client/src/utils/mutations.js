@@ -9,6 +9,36 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_PORTFOLIO = gql`
+  mutation addPortfolio($userId: ID) 
+  {addPortfolio(userId: $userId) 
+    {
+      totalCash
+      totalAssetValue
+       assets {
+          ticker
+          quantity
+          purchasePrice
+        }
+    }
+  }
+`;
+
+export const ADD_ASSET = gql`
+  mutation addAsset($userId: ID, $ticker: String, $quantity: Int, $purchasePrice: NonNegativeFloat) 
+  {addAsset(userId: $userId, ticker: $ticker, quantity: $quantity, purchasePrice: $purchasePrice) 
+    {
+      totalCash
+      totalAssetValue
+       assets {
+          ticker
+          quantity
+          purchasePrice
+        }
+    }
+  }
+`;
+
 export const LOGIN_USER = gql`
   mutation login($email: String, $password: String) {
     login(email: $email, password: $password) {
