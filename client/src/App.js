@@ -15,9 +15,10 @@ import Footer from './components/Footer';
 import Blog from './pages/Blog';
 import Trends from './components/Trends';
 import Signin from './components/SignIn/Signin'
-import Stockform from './components/Stockform/StockForm';
+import Stockform from './components/StockForm/StockForm';
 import SideNav from './components/SideNav';
 import './materialize.css';
+import './index.css';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
