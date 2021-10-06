@@ -17,22 +17,6 @@ function Buyform(props) {
     // const [createportfolio, { error, data }] = useMutation(ADD_PORTFOLIO);
     const [addAsset, { error }] = useMutation(ADD_ASSET);
 
-    const createNewPortflio = async (event) => {
-        event.preventDefault();
-        const newID = auth.getProfile()
-        console.log(newID.data._id)
-        // try {
-        //     const newID = auth.getProfile()
-
-        //     await createportfolio({
-        //         userId: newID.data._id,
-        //     });
-
-        // } catch (event) {
-        //     console.error(event);
-        // }
-    };
-
     const handleChange = (event) => {
         const { value } = event.target;
         setAmount(value);
@@ -42,12 +26,9 @@ function Buyform(props) {
         event.preventDefault()
 
         const myID = auth.getProfile()
-        // console.log(inputPrice.current.innerHTML)
         const purchasePrice = parseFloat(inputPrice.current.innerHTML)
         const quantity = parseInt(amount)
-        // console.log(typeof quantity, quantity)
 
-        console.log("-----", myID.data._id)
         addAsset({
             variables: {
                 userId: myID.data._id,
@@ -75,12 +56,6 @@ function Buyform(props) {
                     </div>
                 </div>
 
-                <div className="row">
-                    <div className="center-align">
-                        <button className="waves-effect waves-light btn" type="submit" name="action"
-                            onClick={(event) => createNewPortflio(event)}>Create Portfolio</button>
-                    </div>
-                </div>
                 {/* <div className="row ">
                     <div className="input-field col l6 offset-l3 m8 offset-m2 s10 offset-s1">
                         <input placeholder="amount" type="int" onChange={handleChange}>{amount}</input>
