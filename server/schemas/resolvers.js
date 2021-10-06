@@ -52,6 +52,7 @@ const resolvers = {
   Mutation: {
     addUser: async (_, { username, name, email, password }) => {
       const user = await User.create({ username, name, email, password });
+      const portfolio = await Portfolio.create({ user: user._id, totalCash: 100000, totalAssetValue: 0 });
       const token = signToken(user);
       return { token, user };
     },
@@ -74,7 +75,7 @@ const resolvers = {
     },
     addPortfolio: async (_, args, context) => {
       const user = await User.findOne({ _id: args.userId });
-      const portfolio = await Portfolio.create({ user: user, totalCash: 100000, totalAssetValue: 0 });
+      const portfolio = await Portfolio.create({ user: user._id, totalCash: 100000, totalAssetValue: 0 });
       return portfolio;
     },
     //This mutation is used to add an asset to a portfolio
@@ -84,7 +85,8 @@ const resolvers = {
       const newAsset = { userId, ticker, quantity, purchasePrice };
       const user = await User.findOne({ _id: userId });
       const asset = await Asset.create(newAsset);
-      const portfolio = await Portfolio.findOne({ user: user });
+      console.log("----------", user)
+      const portfolio = await Portfolio.findOne({ user: user._id });
       const portfolioTotalCash = portfolio.totalCash;
       const portfolioTotalAssets = portfolio.totalAssetValue
       const updatedPortfolio = await Portfolio.findOneAndUpdate(
