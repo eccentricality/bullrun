@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './stockform.css'
 import auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
@@ -11,15 +11,21 @@ function Buyform(props) {
     const inputPrice = useRef();
     const inputTicker = useRef();
 
-    const [amount, setAmount] = useState(0);
-    // const [addstock, setAddStock] = useState({});
+    const [amount, setAmount] = useState();
+    const [bulkPurchase, setBulkPurchase] = useState(0);
 
-    // const [createportfolio, { error, data }] = useMutation(ADD_PORTFOLIO);
     const [addAsset, { error }] = useMutation(ADD_ASSET);
+
+    useEffect(() => {
+        const num = props.price * amount
+        num.toFixed(2)
+        setBulkPurchase(num);
+    }, [amount, props.price])
 
     const handleChange = (event) => {
         const { value } = event.target;
         setAmount(value);
+        setBulkPurchase(props.price * amount);
     };
     //holds obj to send to add portfolio
     const handleAddStock = async (event) => {
@@ -42,12 +48,14 @@ function Buyform(props) {
 
 
     return (
-        <>
+        <>  
+            
             <div className="row">
-                <div className="center-align" value={props.ticker} ref={inputTicker}>{props.ticker}</div>
-                <div className="center-align" value={props.price} ref={inputPrice}>{props.price}</div>
-                <div className="center-align">{props.difference}</div>
-                <input className="input-field col l6 offset-l3 m8 offset-m2 s10 offset-s1" onChange={handleChange}></input>
+                <div className="center-align" value={props.ticker} ref={inputTicker}>Stock: {props.ticker}</div>
+                <div className="center-align" value={props.price} ref={inputPrice}>Price: {props.price}</div>
+                <div className="center-align" value={props.price}>Total Purchase Price: {bulkPurchase ? bulkPurchase : 0}</div>
+                {/* <div className="center-align">{props.difference}</div> */}
+                <input className="input-field col l4 offset-l4 m6 offset-m3 s8 offset-s2" type='number' onChange={handleChange}></input>
 
                 <div className="row">
                     <div className="center-align">

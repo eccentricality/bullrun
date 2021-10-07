@@ -13,12 +13,6 @@ function Stockform() {
     const [ticker, setTicker] = useState('');
     const [stock, setStock] = useState({});
 
-    const rounded = (num1, num2) => {
-        let number = num1 - num2
-        number = number.toFixed(2)
-        console.log(number)
-    }
-
     // setStock({
     //     ticker: data.results[0].T,
     //     price: data.results[0].c,
@@ -40,7 +34,6 @@ function Stockform() {
         event.preventDefault()
         const api = 'XiuFLImIzxjsT7wzsU_fYh6YnMfUt7aZ'
         fetchData(ticker, api)
-
     };
 
     const handleChange = (event) => {
