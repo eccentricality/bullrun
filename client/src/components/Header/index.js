@@ -8,19 +8,22 @@ const Header = () => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
+    window.location = '/';
   };
 
   const renderControls = () => {
     // If logged in show logout controls
     if (Auth.loggedIn()) {
       return (
-        <>
+        <div className="sign-in">
+          <Link className="navlink" onClick={logout}>
+            Signout
+          </Link>
           <p>
             Welcome, {Auth.getProfile().data.username}!
           </p>
-        </>
-      );
-    }
+        </div>
+      )}
     // If logged out show login controls
     return (
       <div className="sign-in">
