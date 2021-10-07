@@ -18,6 +18,7 @@ import Signin from './components/SignIn/Signin'
 import StockForm from './components/StockForm/StockForm';
 import SideNav from './components/SideNav';
 import TopNav from './components/TopNav';
+
 import './materialize.css';
 import './index.css';
 import M from "materialize-css";
@@ -37,6 +38,8 @@ let options = "";
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
+
+// document.cookie = "SameSite=Lax";
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {

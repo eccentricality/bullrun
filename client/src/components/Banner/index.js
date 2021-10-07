@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
 import './index.css';
 
+import Cookies from 'universal-cookie';
+
 export default function Banner() {
   const [news, setNews] = useState([]);
   const apiKey = "bqrZxpYkw4h0AygR9ctu3oqS3YWvgk5O";
+
+  // Set SameSite cookie policy using NPM universal-cookie
+  const cookies = new Cookies();
+  cookies.set('SameSite', 'Lax', { path: '/' });
 
   // use async/await to fetch data from API
   useEffect(() => {

@@ -16,8 +16,8 @@ const TopNav = () => {
     var instance = M.Sidenav.getInstance(elem);
 
     return (
-        <a href="#" data-target="nav-mobile" class="top-nav sidenav-trigger full hide-on-large-only">
-            <i class="material-icons">menu</i>
+        <a href="#" data-target="nav-mobile" className="top-nav sidenav-trigger full hide-on-large-only">
+            <i className="material-icons">menu</i>
         </a>
     );
 };
