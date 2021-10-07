@@ -12,6 +12,7 @@ const typeDefs = gql`
     email: String
     password: String
     friends: [User]
+    thoughts: [Thought]!
     created_at: DateTime
     updated_at: DateTime
   }
@@ -73,10 +74,27 @@ const typeDefs = gql`
     category: String = "all"
   }
 
+  type Thought {
+    _id: ID
+    thoughtText: String
+    thoughtAuthor: String
+    createdAt: String
+    comments: [Comment]!
+  }
+
+  type Comment {
+    _id: ID
+    commentText: String
+    commentAuthor: String
+    createdAt: String
+  }
+
   type Query {
     users: [User]
     user(id: ID!): User
     me: User
+    thoughts(username: String): [Thought]
+    thought(thoughtId: ID!): Thought
     assets:[Asset]
     asset(id: ID!): Asset
     portfolios:[Portfolio]
@@ -88,6 +106,10 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String, name: String, email: String, password: String): Auth
     login(email: String, password: String): Auth
+    addThought(thoughtText: String!): Thought
+    addComment(thoughtId: ID!, commentText: String!): Thought
+    removeThought(thoughtId: ID!): Thought
+    removeComment(thoughtId: ID!, commentId: ID!): Thought
     addPortfolio(userId: ID): Portfolio
     addAsset(userId: ID, ticker:String, quantity:Int, purchasePrice:NonNegativeFloat): Portfolio
     sellAsset(userId: ID, assetId:ID, quantity:Int, sellPrice:NonNegativeFloat): Portfolio

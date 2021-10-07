@@ -1,9 +1,10 @@
 const db = require('../config/connection');
-const { User, Portfolio, Asset, Stock } = require('../models');
+const { User, Portfolio, Asset, Stock, Thought } = require('../models');
 const userSeeds = require('./userSeeds.json');
 const portfolioSeeds = require('./portfolioSeeds.json');
 const assetSeeds = require('./assetSeeds.json');
 const stockSeeds = require('./stockSeeds.json');
+const thoughtSeeds = require('./thoughtSeeds.json');
 
 db.once('open', async () => {
   try {

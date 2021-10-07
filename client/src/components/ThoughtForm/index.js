@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-
 import { ADD_THOUGHT } from '../../utils/mutations';
-import { QUERY_THOUGHTS } from '../../utils/queries';
-
+import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
+import './index.css'
 
 const ThoughtForm = () => {
   const [thoughtText, setThoughtText] = useState('');
@@ -24,6 +23,13 @@ const ThoughtForm = () => {
       } catch (e) {
         console.error(e);
       }
+
+      // update me object's cache
+      const { me } = cache.readQuery({ query: QUERY_ME });
+      cache.writeQuery({
+        query: QUERY_ME,
+        data: { me: { ...me, thoughts: [...me.thoughts, addThought] } },
+      });
     },
   });
 
