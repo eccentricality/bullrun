@@ -17,8 +17,21 @@ import Trends from './components/Trends';
 import Signin from './components/SignIn/Signin'
 import StockForm from './components/StockForm/StockForm';
 import SideNav from './components/SideNav';
+import TopNav from './components/TopNav';
 import './materialize.css';
 import './index.css';
+import M from "materialize-css";
+
+// Initialize Materialize Sidenav
+let elem = "";
+let options = "";
+
+  document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems, options);
+    });
+
+  var instance = M.Sidenav.getInstance(elem);
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -48,6 +61,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+        <TopNav />
         <SideNav />
         <div className="flex-column justify-space-between min-100-vh">
           <Header />

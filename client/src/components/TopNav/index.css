@@ -1,0 +1,13 @@
+a.sidenav-trigger.top-nav {
+    position: absolute;
+    text-align: center;
+    height: 1.5em;
+    width: 1.5em;
+    top: 160px;
+    float: none;
+    margin-left: 1.5em;
+    color: #1c2541;
+    background: #fff;
+    z-index: 2;
+    font-size: 2em;
+}
