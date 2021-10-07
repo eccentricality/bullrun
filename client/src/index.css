@@ -3,6 +3,20 @@ body {
     color: #fff;
 }
 
+.title {
+    margin-top: 2vh;
+    background-image: url(logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 1.6em;
+    padding: .2em;
+}
+
+.container {
+    width: 90%;
+}
+
 .justify-space-between {
     display: flex;
     flex-direction: column;
@@ -32,7 +46,7 @@ header, #wrapper, footer {
 }
 
 .sign-in {
-    margin-top: 1em;
+    margin: 1em 0;
     float: right;
 }
 
@@ -49,4 +63,65 @@ header, #wrapper, footer {
     font-weight: 600;
     outline: 1px solid black;
     padding: .5em;    
+}
+
+.news {
+    margin: 1em 0;
+}
+
+.newsTitle {
+    color: black;
+}
+
+/* (A) FIXED WRAPPER */
+.hwrap {
+    overflow: hidden; /* HIDE SCROLL BAR */
+    background: #5d7797;
+    max-width: fit-content;
+    padding: 10px;
+}
+   
+/* (B) MOVING TICKER WRAPPER */
+.hmove {
+    display: flex;
+    max-width: fit-content;
+}
+  
+/* (C) ITEMS - INTO A LONG HORIZONTAL ROW */
+.hitem {
+    flex-shrink: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    background: #fff;
+    margin: 10px;
+    color: black;
+    max-width: fit-content;
+}
+   
+/* (D) ANIMATION - MOVE ITEMS FROM RIGHT TO LEFT */
+/* 10 ITEMS -1000%, CHANGE THIS IF YOU ADD/REMOVE ITEMS */
+@keyframes banner {
+    0% { transform: translate3d(100%, 0, 0); }
+    100% { transform: translate3d(-10000%, 0, 0); }
+}
+.hmove { animation: banner linear 600s infinite; }
+.hmove:hover { animation-play-state: paused; }
+
+.newsTitle {
+    font-weight: bold;
+    padding-bottom: 1em;
+    max-width: 600px;
+}
+
+.newsImage {
+    margin: auto;
+    max-height: 30vh;
+}
+
+@media only screen and (max-width : 540px) {
+    .newsImage {
+        max-height: 15vh;
+    }
 }

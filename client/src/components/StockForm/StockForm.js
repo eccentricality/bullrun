@@ -58,7 +58,7 @@ function Stockform() {
                         <div className="row ">
                             <div className="input-field col l6 offset-l3 m8 offset-m2 s10 offset-s1">
                                 <input placeholder="ticker" id="ticker" type="text" onChange={handleChange}></input>
-                                <label for="ticker"></label>
+                                <label htmlFor="ticker"></label>
                             </div>
                         </div>
 

@@ -11,3 +11,13 @@
   line-height: 48px;
   padding: 0 1em;
 }
+
+.sidenav {
+  width: 200px;
+  padding: 1em;
+}
+
+.sidenav li>a {
+  padding: 0;
+  margin-left: 1em;
+}

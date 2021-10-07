@@ -24,6 +24,7 @@
     "google-trends-api": "^4.9.2",
     "graphql": "^15.6.0",
     "graphql-scalars": "^1.10.1",
+    "materialize-css": "^1.0.0-rc.2",
     "nodemon": "^2.0.13",
     "react-load-script": "0.0.6"
   }

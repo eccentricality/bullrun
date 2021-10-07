@@ -34,8 +34,10 @@ export default function Banner() {
             {/* loop over the news */}
             {news.map((article, index) => (
               <div className="hitem" key={index}>
-                <h6 className="newsTitle">{article.title}</h6>
-                <img className="newsImage" src={article.image_url} alt=""></img>
+                <a href={article}>
+                  <h6 className="newsTitle">{article.title}</h6>
+                  <img className="newsImage" src={article.image_url} alt=""></img>
+                </a>
               </div>
             ))}
           </div>
