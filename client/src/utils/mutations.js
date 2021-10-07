@@ -1,40 +1,57 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const ADD_USER = gql`
-  mutation addUser($email: String, $name: String, $password: String, $username: String) 
-  {addUser(name: $name, email: $email, password: $password, username: $username) 
-    {
+  mutation addUser(
+    $email: String
+    $name: String
+    $password: String
+    $username: String
+  ) {
+    addUser(
+      name: $name
+      email: $email
+      password: $password
+      username: $username
+    ) {
       token
     }
   }
 `;
 
 export const ADD_PORTFOLIO = gql`
-  mutation addPortfolio($userId: ID) 
-  {addPortfolio(userId: $userId) 
-    {
+  mutation addPortfolio($userId: ID) {
+    addPortfolio(userId: $userId) {
       totalCash
       totalAssetValue
-       assets {
-          ticker
-          quantity
-          purchasePrice
-        }
+      assets {
+        ticker
+        quantity
+        purchasePrice
+      }
     }
   }
 `;
 
 export const ADD_ASSET = gql`
-  mutation addAsset($userId: ID, $ticker: String, $quantity: Int, $purchasePrice: NonNegativeFloat) 
-  {addAsset(userId: $userId, ticker: $ticker, quantity: $quantity, purchasePrice: $purchasePrice) 
-    {
-      totalCash
-      totalAssetValue
-       assets {
-          ticker
-          quantity
-          purchasePrice
-        }
+  mutation addAsset(
+    $userId: ID,
+    $ticker: String,
+    $quantity: Int,
+    $purchasePrice: NonNegativeFloat
+  ) {
+    addAsset(
+      userId: $userId,
+      ticker: $ticker,
+      quantity: $quantity,
+      purchasePrice: $purchasePrice
+    ) {
+      totalCash,
+      totalAssetValue,
+      assets {
+        ticker,
+        quantity,
+        purchasePrice
+      }
     }
   }
 `;
@@ -46,7 +63,6 @@ export const LOGIN_USER = gql`
     }
   }
 `;
-
 
 export const ADD_THOUGHT = gql`
   mutation addThought($thoughtText: String!) {
