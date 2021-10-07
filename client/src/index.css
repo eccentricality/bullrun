@@ -11,6 +11,42 @@ body {
     min-height: 100vh;
 }
 
-header, main, footer {
-    padding-left: 200px;
+header, #wrapper, footer {
+    padding-left: 200px; 
+}
+
+@media only screen and (max-width : 992px) {
+    header, #wrapper, footer {
+        padding-left: 0;
+    }
+}
+
+.sidenav {
+    width: 200px;
+    padding: 1em;
+}
+
+.sidenav li>a {
+    padding: 0;
+    margin-left: 1em;
+}
+
+.sign-in {
+    margin-top: 1em;
+    float: right;
+}
+
+.sign-in a {
+    color: #fff;
+    font-weight: 600;
+    outline: 1px solid white;
+    padding: .5em;    
+}
+
+.sign-in a:active {
+    color: black;
+    background: #fff;
+    font-weight: 600;
+    outline: 1px solid black;
+    padding: .5em;    
 }

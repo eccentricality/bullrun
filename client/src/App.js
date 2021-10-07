@@ -51,7 +51,7 @@ function App() {
         <SideNav />
         <div className="flex-column justify-space-between min-100-vh">
           <Header />
-          <div className="container">
+          <div id="wrapper" className="container">
             <Route exact path="/">
               <Home />
             </Route>
