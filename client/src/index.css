@@ -66,7 +66,14 @@ header, #wrapper, footer {
 }
 
 .news {
-    margin: 1em 0;
+    margin: 1em 0 2em 0;
+}
+
+.newsHeader { 
+    font-family: "Brush Script MT", cursive;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
 .newsTitle {
@@ -109,15 +116,29 @@ header, #wrapper, footer {
 .hmove { animation: banner linear 600s infinite; }
 .hmove:hover { animation-play-state: paused; }
 
+.hitem:active {
+    filter: invert(.3) brightness(1.6);
+}
+
 .newsTitle {
     font-weight: bold;
     padding-bottom: 1em;
     max-width: 600px;
+    min-width: 200px;
 }
 
 .newsImage {
     margin: auto;
-    max-height: 30vh;
+    max-height: 25vh;
+}
+
+.newsLogo {
+    height: 2em;
+    display: block;
+    margin: 1em;
+    bottom: 0;
+    left: 0;
+    align-self: initial;
 }
 
 @media only screen and (max-width : 540px) {

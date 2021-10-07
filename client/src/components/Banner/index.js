@@ -16,6 +16,8 @@ export default function Banner() {
       const data = await res.json();
       const results = data.results;
 
+      console.log(results[0]);
+
       // store data into React state variables
       setNews(results);
     };
@@ -27,16 +29,20 @@ export default function Banner() {
   
   return (
     <div>
+      <h3 className="newsHeader">Daily News Feed</h3>
       {/* display data from API */}
       {news && (
         <div className="news hwrap">
           <div className="hmove">
             {/* loop over the news */}
             {news.map((article, index) => (
-              <div className="hitem" key={index}>
-                <a href={article}>
-                  <h6 className="newsTitle">{article.title}</h6>
-                  <img className="newsImage" src={article.image_url} alt=""></img>
+              <div>
+                <a href={article.article_url} target="_blank" rel="noreferrer"> 
+                  <div className="hitem" key={index}>
+                      <h6 className="newsTitle">{article.title}</h6>
+                      <img className="newsImage" src={article.image_url} alt=""></img>
+                      <img className="newsLogo" src={article.publisher.logo_url} alt=""></img>
+                  </div>
                 </a>
               </div>
             ))}
