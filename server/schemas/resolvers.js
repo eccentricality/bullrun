@@ -85,7 +85,6 @@ const resolvers = {
       const newAsset = { userId, ticker, quantity, purchasePrice };
       const user = await User.findOne({ _id: userId });
       const asset = await Asset.create(newAsset);
-      console.log("----------", user)
       const portfolio = await Portfolio.findOne({ user: user._id });
       const portfolioTotalCash = portfolio.totalCash;
       const portfolioTotalAssets = portfolio.totalAssetValue
@@ -97,6 +96,41 @@ const resolvers = {
           totalCash: (portfolioTotalCash - (quantity * purchasePrice)),
           totalAssetValue: (portfolioTotalAssets + (quantity * purchasePrice)),
           $push: { assets: asset }
+        });
+
+
+      return await Portfolio.findOne({ _id: updatedPortfolio._id })
+        .populate('assets', [, 'ticker', 'quantity', 'purchasePrice']);
+    },
+
+    //This mutation is used to sell an asset to a portfolio
+    sellAsset: async (_, { userId, assetId, quantity, sellPrice }, context) => {
+
+      //find the sold asset
+      const soldAsset = Asset.findOne({ _id: assetId });
+      //compare sold qty to asset qty, if it matches, remove asset, else update
+      if (quantity === soldAsset.quantity) {
+        Asset.findOneAndRemove({ _id: assetId });
+      } else {
+        Asset.findOneAndUpdate({ _id: assetId }, { quantity: (soldAsset.quantity - quantity) });
+      };
+      //get user
+      const user = await User.findOne({ _id: userId });
+
+      //get user portfolio
+      const portfolio = await Portfolio.findOne({ user: user._id });
+      //get the total cash and total assets of portfolio currently
+      const portfolioTotalCash = portfolio.totalCash;
+      const portfolioTotalAssets = portfolio.totalAssetValue
+
+      //update portfolio with increased cash, lower asset value
+      const updatedPortfolio = await Portfolio.findOneAndUpdate(
+        {
+          _id: portfolio._id
+        },
+        {
+          totalCash: (portfolioTotalCash + (quantity * sellPrice)),
+          totalAssetValue: (portfolioTotalAssets - (quantity * sellPrice)),
         });
 
 
