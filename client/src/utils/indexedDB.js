@@ -20,6 +20,8 @@ export function indexedDB() {
         db = event.target.result;
         // Create a transaction on the BudgetStore db with readwrite access
         const transaction = db.transaction(["BannerNews"], "readwrite");
+        // 
+        // const articleStore = transaction.ob
     };
 
 };

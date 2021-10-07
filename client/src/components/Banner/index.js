@@ -16,23 +16,6 @@ export default function Banner() {
       const data = await res.json();
       const results = data.results;
 
-      // Create indexedDB instance for storing API response data
-      var request = window.indexedDB.open("BannerNews", 1);
-      // store data in IndexedDB for backup
-      request.onsuccess = function(event) {
-        // Assign response to db variable
-        var db = request.result;
-        // Create an object store called "articles"
-        var articleStore = db.createObjectStore("articles", { autoIncrement : true });
-        // Loop over data to add desired fields to db
-        for (const article of results) {
-          articleStore.add({
-            title: article.title,
-            image: article.image_url
-          });
-        };
-      };
-
       // store data into React state variables
       setNews(results);
     };
