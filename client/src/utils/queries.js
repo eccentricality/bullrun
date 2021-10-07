@@ -20,6 +20,20 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const QUERY_PORTFOLIO = gql`
+  query portfolio($userId: ID!) {
+    portfolio(userId: $userId) {
+      totalCash
+      totalAssetValue
+      assets {
+        ticker
+        quantity
+        purchasePrice
+      }
+    }
+  }
+`;
+
 export const QUERY_ME = gql`
   query me {
     me {

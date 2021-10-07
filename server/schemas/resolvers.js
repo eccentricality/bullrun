@@ -30,7 +30,8 @@ const resolvers = {
 
     portfolio: async (_, { userId }, context) => {
       const user = await User.findOne({ _id: userId });
-      return await Portfolio.findOne({ user: user }).populate('assets', [, 'ticker', 'quantity', 'purchasePrice'])
+      return await Portfolio.findOne({ user: user })
+      .populate('assets', [, 'ticker', 'quantity', 'purchasePrice'])
     },
 
     currentStockPrice: async (_, { ticker }) => {
