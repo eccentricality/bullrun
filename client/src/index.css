@@ -37,12 +37,12 @@ header, #wrapper, footer {
 
 .sidenav {
     width: 200px;
-    padding: 1em;
+    padding: 0;
 }
 
 .sidenav li>a {
-    padding: 0;
-    margin-left: 1em;
+    margin: 0;
+    padding: 0 1em;
 }
 
 .sign-in {
@@ -105,6 +105,7 @@ header, #wrapper, footer {
     margin: 10px;
     color: black;
     max-width: fit-content;
+    border: .25em solid #1c2541;
 }
    
 /* (D) ANIMATION - MOVE ITEMS FROM RIGHT TO LEFT */
@@ -124,7 +125,7 @@ header, #wrapper, footer {
     font-weight: bold;
     padding-bottom: 1em;
     max-width: 600px;
-    min-width: 200px;
+    min-width: 300px;
 }
 
 .newsImage {
@@ -133,12 +134,12 @@ header, #wrapper, footer {
 }
 
 .newsLogo {
-    height: 2em;
+    height: 2.5em;
     display: block;
-    margin: 1em;
-    bottom: 0;
-    left: 0;
-    align-self: initial;
+    padding: .2em;
+    margin: auto;
+    margin-top: 1em;
+    margin-right: 0;
 }
 
 @media only screen and (max-width : 540px) {

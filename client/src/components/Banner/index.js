@@ -36,9 +36,9 @@ export default function Banner() {
           <div className="hmove">
             {/* loop over the news */}
             {news.map((article, index) => (
-              <div>
+              <div key={index}>
                 <a href={article.article_url} target="_blank" rel="noreferrer"> 
-                  <div className="hitem" key={index}>
+                  <div className="hitem">
                       <h6 className="newsTitle">{article.title}</h6>
                       <img className="newsImage" src={article.image_url} alt=""></img>
                       <img className="newsLogo" src={article.publisher.logo_url} alt=""></img>
