@@ -90,6 +90,8 @@ const typeDefs = gql`
     login(email: String, password: String): Auth
     addPortfolio(userId: ID): Portfolio
     addAsset(userId: ID, ticker:String, quantity:Int, purchasePrice:NonNegativeFloat): Portfolio
+    sellAsset(userId: ID, assetId:ID, quantity:Int, sellPrice:NonNegativeFloat): Portfolio
+
   }
 `;
 
