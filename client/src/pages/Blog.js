@@ -10,6 +10,7 @@ import { QUERY_THOUGHTS } from '../utils/queries';
 const Blog = () => {
   const { loading, data } = useQuery(QUERY_THOUGHTS);
   const thoughts = data?.thoughts || [];
+  console.log(thoughts);
 
   return (
     <div>
@@ -34,12 +35,12 @@ const Blog = () => {
       <div>
         GOOGLE TRENDS
         <div id="widget">
-        <GoogleTrends
-          type="TIMESERIES"
-          keyword="Stocks"
-          url="https://ssl.gstatic.com/trends_nrtr/2051_RC11/embed_loader.js"
-        />
-      </div>
+          <GoogleTrends
+            type="TIMESERIES"
+            keyword="Stocks"
+            url="https://ssl.gstatic.com/trends_nrtr/2051_RC11/embed_loader.js"
+          />
+        </div>
       </div>
     </div>
   );

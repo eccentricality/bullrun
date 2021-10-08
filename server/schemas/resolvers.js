@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
-const { User, Asset, Portfolio, Stock } = require('../models');
+const { User, Asset, Portfolio, Stock, Thought } = require('../models');
 const { DateTimeResolver } = require('graphql-scalars');
 const googleTrends = require('google-trends-api');
 const { externalGetPrice } = require('../utils/updateStocks');
@@ -31,13 +31,19 @@ const resolvers = {
     portfolio: async (_, { userId }, context) => {
       const user = await User.findOne({ _id: userId });
       return await Portfolio.findOne({ user: user })
-      .populate('assets', [, 'ticker', 'quantity', 'purchasePrice'])
+        .populate('assets', [, 'ticker', 'quantity', 'purchasePrice'])
     },
 
     currentStockPrice: async (_, { ticker }) => {
       const data = await externalGetPrice(ticker);
       return [data.ticker, data.results[0].c];
 
+    },
+    thoughts: async (parent, args) => {
+      return await Thought.find().populate('user');
+    },
+    thought: async (parent, { thoughtId }) => {
+      return await Thought.findOne({ _id: thoughtId });
     },
 
     googleTrends: async (_, { input }) => {
@@ -137,7 +143,42 @@ const resolvers = {
 
       return await Portfolio.findOne({ _id: updatedPortfolio._id })
         .populate('assets', [, 'ticker', 'quantity', 'purchasePrice']);
-    }
+    },
+    addThought: async (parent, { thoughtText, userId }) => {
+      const user = await User.findOne({ _id: userId });
+      const thought = await Thought.create({ thoughtText, user });
+
+      //leaving out for now 
+      // await User.findOneAndUpdate(
+      //   { username: thoughtAuthor },
+      //   { $addToSet: { thoughts: thought._id } }
+      // );
+
+      return thought;
+    },
+    addComment: async (parent, { thoughtId, commentText, userId }) => {
+      const user = await User.findOne({ _id: userId });
+      return Thought.findOneAndUpdate(
+        { _id: thoughtId },
+        {
+          $addToSet: { comments: { commentText, user } },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
+    removeThought: async (parent, { thoughtId }) => {
+      return Thought.findOneAndDelete({ _id: thoughtId });
+    },
+    removeComment: async (parent, { thoughtId, commentId }) => {
+      return Thought.findOneAndUpdate(
+        { _id: thoughtId },
+        { $pull: { comments: { _id: commentId } } },
+        { new: true }
+      );
+    },
   }
 };
 
