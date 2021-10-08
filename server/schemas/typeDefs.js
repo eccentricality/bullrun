@@ -73,6 +73,24 @@ const typeDefs = gql`
     category: String = "all"
   }
 
+  type Thought {
+    _id: ID
+    thoughtText: String
+    user: User
+    comments: [Comment]!
+    created_at: DateTime
+    updated_at: DateTime
+  }
+
+  type Comment {
+    _id: ID
+    commentText: String
+    user: User
+    createdAt: String
+    created_at: DateTime
+    updated_at: DateTime
+  }
+
   type Query {
     users: [User]
     user(id: ID!): User
@@ -83,6 +101,8 @@ const typeDefs = gql`
     portfolio(userId: ID!): Portfolio
     currentStockPrice(ticker: String!): [String]
     googleTrends(input: TrendInput!): [Trend]
+    thoughts: [Thought]
+    thought(thoughtId: ID!): Thought
   }
 
   type Mutation {
@@ -91,7 +111,14 @@ const typeDefs = gql`
     addPortfolio(userId: ID): Portfolio
     addAsset(userId: ID, ticker:String, quantity:Int, purchasePrice:NonNegativeFloat): Portfolio
     sellAsset(userId: ID, assetId:ID, quantity:Int, sellPrice:NonNegativeFloat): Portfolio
-
+    addThought(thoughtText: String!, userId: ID!): Thought
+    addComment(
+      thoughtId: ID!
+      commentText: String!
+      userId: ID!
+    ): Thought
+    removeThought(thoughtId: ID!): Thought
+    removeComment(thoughtId: ID!, commentId: ID!): Thought
   }
 `;
 

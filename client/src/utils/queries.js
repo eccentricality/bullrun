@@ -45,15 +45,37 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_THOUGHTS = gql`
-  query getThoughts {
+  query thoughts {
     thoughts {
       _id
       thoughtText
-      thoughtAuthor
-      createdAt
+      user{
+        _id
+        username
+      }
+      created_at
     }
   }
 `;
+
+export const QUERY_SINGLE_THOUGHT = gql`
+  query getSingleThought($thoughtId: ID!) {
+    thought(thoughtId: $thoughtId) {
+      _id
+      thoughtText
+      user{
+        _id
+      }
+      createdAt
+      comments {
+        _id
+        commentText
+        created_at
+      }
+    }
+  }
+`;
+
 
 export const QUERY_GOOGLE_TRENDS = gql`
   query googleTrends($input: TrendInput!) {

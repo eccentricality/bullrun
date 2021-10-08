@@ -65,12 +65,15 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_THOUGHT = gql`
-  mutation addThought($thoughtText: String!) {
-    addThought(thoughtText: $thoughtText) {
+  mutation addThought($thoughtText: String!, $userId: ID!) {
+    addThought(thoughtText: $thoughtText, userId: $userId) {
       _id
       thoughtText
-      thoughtAuthor
-      createdAt
+      user{
+      _id
+      username
+      }
+      created_at
       comments {
         _id
         commentText
@@ -80,16 +83,26 @@ export const ADD_THOUGHT = gql`
 `;
 
 export const ADD_COMMENT = gql`
-  mutation addComment($thoughtId: ID!, $commentText: String!) {
-    addComment(thoughtId: $thoughtId, commentText: $commentText) {
+  mutation addComment(
+    $thoughtId: ID!
+    $commentText: String!
+    $userId: ID!
+  ) {
+    addComment(
+      thoughtId: $thoughtId
+      commentText: $commentText
+      userId: $userId
+    ) {
       _id
       thoughtText
-      thoughtAuthor
-      createdAt
+      user{
+        _id
+      }
+      created_at
       comments {
         _id
         commentText
-        createdAt
+        created_at
       }
     }
   }
