@@ -114,7 +114,7 @@ header, #wrapper, footer {
     0% { transform: translate3d(100%, 0, 0); }
     100% { transform: translate3d(-10000%, 0, 0); }
 }
-.hmove { animation: banner linear 600s infinite; }
+.hmove { animation: banner linear 900s infinite; }
 .hmove:hover { animation-play-state: paused; }
 
 .hitem:active {
