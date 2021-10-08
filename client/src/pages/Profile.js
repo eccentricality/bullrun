@@ -5,15 +5,19 @@ import { useQuery } from '@apollo/client';
 // Utilities
 import Auth from '../utils/auth';
 import { QUERY_USERS, QUERY_USER, QUERY_ME } from '../utils/queries';
+import ThoughtForm from '../components/ThoughtForm';
+import ThoughtList from '../components/ThoughtList';
 // Components
 import UserList from '../components/UserList';
 
+
+
 const Profile = () => {
-  const { id } = useParams();
+  const { username: userParam } = useParams();
 
   // Get current user
-  const { loading, data, error } = useQuery(id ? QUERY_USER : QUERY_ME, {
-    variables: { id },
+  const { loading, data, error } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+    variables: { username: userParam },
   });
 
   // Get a list of all users
@@ -25,7 +29,7 @@ const Profile = () => {
   if (error) console.log(error);
 
   // redirect to personal profile page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data._id === id) {
+  if (Auth.loggedIn() && Auth.getProfile().data._id === userParam) {
     return <Redirect to="/me" />;
   }
 
@@ -54,7 +58,7 @@ const Profile = () => {
   };
 
   const renderCurrentUserInfo = () => {
-    if (id) return null;
+    if (userParam) return null;
     return (
       <ul>
         <li>username: {user.username}</li>
@@ -67,7 +71,7 @@ const Profile = () => {
     <main>
       <div className="flex-row justify-center mb-3">
         <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
-          Viewing {id ? `${user.username}'s` : 'your'} profile.
+          Viewing {userParam ? `${user.username}'s` : 'your'} profile.
         </h2>
         {renderCurrentUserInfo()}
         {renderUserList()}
