@@ -2,8 +2,8 @@
     font-size: medium;
 }
 
-.card {
-    background-color: #1c2541;
+.card p {
+    background-color: white;
 }
 
 .card-header {
