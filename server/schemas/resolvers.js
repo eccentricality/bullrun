@@ -48,6 +48,13 @@ const resolvers = {
       } catch (err) {
         console.error('Oh no there was an error', err);
       }
+    },
+    getThoughts: async (_, args, context) => {
+      if (context.thoughtText) {
+        const userData = await Thoughts.findOne({_id: context.thoughts._id})
+
+        return userData
+      }
     }
   },
   Mutation: {
@@ -137,6 +144,9 @@ const resolvers = {
 
       return await Portfolio.findOne({ _id: updatedPortfolio._id })
         .populate('assets', [, 'ticker', 'quantity', 'purchasePrice']);
+    },
+    addThought: async (_, { thoughtText }) => {
+      console.log('THOUGHT TEXT ATTEMPTED')
     }
   }
 };

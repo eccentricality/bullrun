@@ -49,6 +49,13 @@ const typeDefs = gql`
     user: User
   }
 
+  type Thoughts {
+    _id: ID
+    thoughtText: [String]
+    thoughtAuthor: String
+    createdAt: String
+  }
+
   type Trend {
     id: ID
     title: String
@@ -83,6 +90,7 @@ const typeDefs = gql`
     portfolio(userId: ID!): Portfolio
     currentStockPrice(ticker: String!): [String]
     googleTrends(input: TrendInput!): [Trend]
+    getThoughts: [Thoughts]
   }
 
   type Mutation {
@@ -91,7 +99,7 @@ const typeDefs = gql`
     addPortfolio(userId: ID): Portfolio
     addAsset(userId: ID, ticker:String, quantity:Int, purchasePrice:NonNegativeFloat): Portfolio
     sellAsset(userId: ID, assetId:ID, quantity:Int, sellPrice:NonNegativeFloat): Portfolio
-
+    addThought(thoughtsId: ID, thoughtText: thoughtText)
   }
 `;
 
