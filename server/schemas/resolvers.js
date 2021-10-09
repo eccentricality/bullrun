@@ -41,8 +41,9 @@ const resolvers = {
     },
 
     googleTrends: async (_, args) => {
+      console.log("ARGS", args)
       try {
-        const results = await googleTrends.realTimeTrends({ geo: "US", category: "b" });
+        const results = await googleTrends.realTimeTrends(args.input);
         console.log('These results are awesome', JSON.parse(results).storySummaries.trendingStories);
         return JSON.parse(results).storySummaries.trendingStories;
       } catch (err) {
