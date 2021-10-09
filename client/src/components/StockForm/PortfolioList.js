@@ -18,9 +18,7 @@ function PortfolioList({ portfolioAssets, totalAssets, myID }) {
     //holds obj to send to add portfolio
     const handleSellStock = async (event) => {
         event.preventDefault()
-        console.log(
-            event
-        )
+        
         const myPrice = parseInt(event.target.dataset.price)
 
         await sellAsset({
