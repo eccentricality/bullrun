@@ -32,6 +32,21 @@ export const ADD_PORTFOLIO = gql`
   }
 `;
 
+export const QUERY_PORTFOLIO = gql`
+  mutation portfolio($userId: ID!) {
+    portfolio(userId: $userId) {
+      totalCash
+      totalAssetValue
+      assets {
+        ticker
+        quantity
+        purchasePrice
+        _id
+      }
+    }
+  }
+`;
+
 export const ADD_ASSET = gql`
   mutation addAsset(
     $userId: ID,
@@ -51,6 +66,7 @@ export const ADD_ASSET = gql`
         ticker,
         quantity,
         purchasePrice
+        _id
       }
     }
   }

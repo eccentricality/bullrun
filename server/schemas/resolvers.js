@@ -28,11 +28,7 @@ const resolvers = {
       return await Portfolio.find();
     },
 
-    portfolio: async (_, { userId }, context) => {
-      const user = await User.findOne({ _id: userId });
-      return await Portfolio.findOne({ user: user })
-      .populate('assets', [, 'ticker', 'quantity', 'purchasePrice'])
-    },
+
 
     currentStockPrice: async (_, { ticker }) => {
       const data = await externalGetPrice(ticker);
@@ -51,6 +47,12 @@ const resolvers = {
     }
   },
   Mutation: {
+    portfolio: async (_, { userId }, context) => {
+      const user = await User.findOne({ _id: userId });
+      return await Portfolio.findOne({ user: user })
+      .populate('assets', [, 'ticker', 'quantity', 'purchasePrice'])
+    },
+
     addUser: async (_, { username, name, email, password }) => {
       const user = await User.create({ username, name, email, password });
       const portfolio = await Portfolio.create({ user: user._id, totalCash: 100000, totalAssetValue: 0 });

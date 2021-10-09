@@ -80,12 +80,12 @@ const typeDefs = gql`
     assets:[Asset]
     asset(id: ID!): Asset
     portfolios:[Portfolio]
-    portfolio(userId: ID!): Portfolio
     currentStockPrice(ticker: String!): [String]
     googleTrends(input: TrendInput!): [Trend]
   }
 
   type Mutation {
+    portfolio(userId: ID!): Portfolio
     addUser(username: String, name: String, email: String, password: String): Auth
     login(email: String, password: String): Auth
     addPortfolio(userId: ID): Portfolio

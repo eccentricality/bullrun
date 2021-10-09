@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Buyform from './Buyform'
-import Portfolio from './Portfolio'
 import './stockform.css'
 import auth from '../../utils/auth';
 
@@ -31,7 +30,7 @@ function Stockform() {
     
         // }, [user])
 
-        const myUserId = auth.getProfile()
+        // const myUserId = auth.getProfile()
 
     const fetchData = (ticker, api) => {
 
@@ -64,16 +63,19 @@ function Stockform() {
                 <form className="col s12" id="stock-form">
 
                     <div className="row z-depth-3 border-radius col l6 offset-l3 m8 offset-m2 s10 offset-s1 test text">
-
                         <div className="row">
                             <div className="center-align">
-                                <h4 className="text">Stock search</h4>
+                                <h4 className="text no-margin-bottom">Purchase Form</h4>
                             </div>
                         </div>
-
+                        <div className="row">
+                            <div className="center-align">
+                                <h6 className="text">Search Ticker</h6>
+                            </div>
+                        </div>
                         <div className="row ">
                             <div className="input-field col l6 offset-l3 m8 offset-m2 s10 offset-s1">
-                                <input placeholder="ticker" id="ticker" type="text" onChange={handleChange}></input>
+                                <input placeholder="ticker" id="ticker" type="text" className="no-margin-top" onChange={handleChange}></input>
                                 <label htmlFor="ticker"></label>
                             </div>
                         </div>
@@ -83,7 +85,7 @@ function Stockform() {
                                 <button className="waves-effect waves-light btn" type="submit" name="action" onClick={(event) => handleSearch(event)}>Search</button>
                             </div>
                         </div>
-                        <Portfolio user={myUserId.data._id}/>
+                        
                         <Buyform ticker={stock.ticker} price={stock.price} difference={stock.difference} />
                         
                     </div>
