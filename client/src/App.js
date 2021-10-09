@@ -15,7 +15,7 @@ import Footer from './components/Footer';
 import Blog from './pages/Blog';
 import Trends from './components/Trends';
 import Signin from './components/SignIn/Signin'
-import StockForm from './components/StockForm/StockForm';
+import Portfolio from './components/StockForm/Portfolio';
 import SideNav from './components/SideNav';
 import TopNav from './components/TopNav';
 
@@ -85,7 +85,7 @@ function App() {
               <Profile />
             </Route>
             <Route exact path="/portfolio">
-              <StockForm />
+              <Portfolio />
             </Route>
             <Route exact path="/trends">
               <Trends />

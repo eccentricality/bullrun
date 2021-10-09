@@ -18,12 +18,9 @@ function PortfolioList({ portfolioAssets, totalAssets, myID }) {
     //holds obj to send to add portfolio
     const handleSellStock = async (event) => {
         event.preventDefault()
-        console.log({
-            userId: myID.data._id,
-            assetId: event.target.dataset._id,
-            sellPrice: event.target.dataset.price,
-            quantity: sellQuantity
-        })
+        console.log(
+            event
+        )
         const myPrice = parseInt(event.target.dataset.price)
 
         await sellAsset({
@@ -34,6 +31,7 @@ function PortfolioList({ portfolioAssets, totalAssets, myID }) {
                 quantity: sellQuantity
             }
         })
+
     };
 
     if (!portfolioAssets === []) {

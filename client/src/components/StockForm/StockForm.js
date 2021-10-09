@@ -5,36 +5,18 @@ import auth from '../../utils/auth';
 
 
 
+
 function Stockform() {
 
-    // const inputRef = useRef();
-    // stock.results[0].T, stock.results[0].c, stock.results[0].c - stock.results[0].o
-    // difference: rounded(data.results[0].c - data.results[0].o)
+
 
     const [ticker, setTicker] = useState('');
     const [stock, setStock] = useState({});
     const [user, setUser] = useState("");
 
-    // setStock({
-    //     ticker: data.results[0].T,
-    //     price: data.results[0].c,
-    //     difference: data.results[0].c - data.results[0].o
-    // })
-
-    // const myUserId = auth.getProfile()
-    //     setUser(myUserId.data._id)
-
-        // useEffect(() => {
-        //     const myUserId = auth.getProfile()
-        //     setUser(myUserId.data._id)
-    
-        // }, [user])
-
-        // const myUserId = auth.getProfile()
-
     const fetchData = (ticker, api) => {
 
-        
+
 
         fetch(`https://api.polygon.io/v2/aggs/ticker/${ticker}/prev?adjusted=true&apiKey=${api}`)
             .then(res => res.ok && res.json())
@@ -54,7 +36,7 @@ function Stockform() {
     const handleChange = (event) => {
         const { value } = event.target;
         setTicker(value);
-      };
+    };
 
 
     return (
@@ -85,9 +67,9 @@ function Stockform() {
                                 <button className="waves-effect waves-light btn" type="submit" name="action" onClick={(event) => handleSearch(event)}>Search</button>
                             </div>
                         </div>
-                        
+
                         <Buyform ticker={stock.ticker} price={stock.price} difference={stock.difference} />
-                        
+
                     </div>
 
                 </form>
@@ -97,5 +79,6 @@ function Stockform() {
         </>
     );
 }
+
 
 export default Stockform;
