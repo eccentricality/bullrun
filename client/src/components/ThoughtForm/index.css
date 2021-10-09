@@ -1,0 +1,14 @@
+.thoughtText {
+    background-color: #fff;
+    min-height: 6em;
+}
+
+.card {
+    padding: 1em;
+    border: 5px solid #1c2541;
+    color: black;
+}
+
+.card h4 {
+    color: black;
+}

@@ -42,7 +42,7 @@ function Stockform() {
 
     return (
         <>
-            <div className="row ">
+            <div className="row">
                 <form className="col s12" id="stock-form">
 
                     <div className="row z-depth-3 border-radius col l6 offset-l3 m8 offset-m2 s10 offset-s1 test text">

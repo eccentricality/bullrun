@@ -32,7 +32,7 @@ const Blog = () => {
           )}
         </div>
       </div>
-      <div>
+      {/* <div>
         GOOGLE TRENDS
         <div id="widget">
           <GoogleTrends
@@ -41,7 +41,7 @@ const Blog = () => {
             url="https://ssl.gstatic.com/trends_nrtr/2051_RC11/embed_loader.js"
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

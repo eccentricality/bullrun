@@ -38,7 +38,7 @@ function PortfolioList({ portfolioAssets, totalAssets, myID }) {
 
     return (
         <>
-            <div className="margin-bottom-big margin-top-small">
+            <div className="margin-bottom-big margin-top-small stockform">
                 <div className="row">
                     <div className="center-align">
                         <h4 className="text no-margin-bottom">Stock Portfolio</h4>
@@ -49,9 +49,8 @@ function PortfolioList({ portfolioAssets, totalAssets, myID }) {
                 <table className='centered'>
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Item Name</th>
-                            <th>Item Price</th>
+                            <th>Ticker</th>
+                            <th>Price</th>
                             <th>Quantity</th>
                             <th>Sell</th>
                         </tr>

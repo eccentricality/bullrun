@@ -17,21 +17,15 @@ const ThoughtList = ({ thoughts, title }) => {
       {thoughts &&
         thoughts.map((thought) => (
           <div key={thought._id} className="card mb-3">
-            <h4 style={{ fontSize: '1rem', color: 'blue' }} className="card-header bg-primary text-light p-2 m-0">
+            <h4 className="card-header">
               {thought.user.username} <br />
-              <span style={{ fontSize: '1rem', color: 'blue' }}>
+              <span className="postDate">
                 had this thought on {thought.created_at}
               </span>
             </h4>
-            <div className="card-body bg-light p-2">
-              <p style={{ fontSize: '1rem', color: 'blue' }}>{thought.thoughtText}</p>
+            <div className="card-body">
+              <p>{thought.thoughtText}</p>
             </div>
-            <Link
-              className="btn btn-primary btn-block btn-squared"
-              to={`/thoughts/${thought._id}`}
-            >
-              Join the discussion on this thought.
-            </Link>
           </div>
         ))}
     </div>

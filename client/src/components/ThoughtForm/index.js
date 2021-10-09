@@ -6,6 +6,7 @@ import { ADD_THOUGHT } from '../../utils/mutations';
 import { QUERY_THOUGHTS } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
+import './index.css';
 
 
 const ThoughtForm = () => {
@@ -72,11 +73,10 @@ const ThoughtForm = () => {
           >
             <div className="col-12 col-lg-9">
               <textarea
+                className="form-input w-100 thoughtText"
                 name="thoughtText"
                 placeholder="Here's a new thought..."
                 value={thoughtText}
-                className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical', color: 'white' }}
                 onChange={handleChange}
               ></textarea>
             </div>
