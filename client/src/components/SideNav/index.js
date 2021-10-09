@@ -13,24 +13,24 @@ const SideNav = () => {
                             Home
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/profile" className="navlink">
                             <i className="material-icons left">account_circle</i>
                             User Profile
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/portfolio" className="navlink">
                             <i className="material-icons left">business_center</i>
                             Portfolio
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/" className="navlink">
                             <i className="material-icons left">account_balance</i>
                             Trade History
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/trends" className="navlink">
                             <i className="material-icons left">arrow_upward</i>
@@ -43,7 +43,7 @@ const SideNav = () => {
                             Blog
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/" className="navlink">
                             <i className="material-icons left">attach_money</i>
                             Fortune 500
@@ -54,7 +54,7 @@ const SideNav = () => {
                             <i className="material-icons left">link</i>
                             Resources
                         </Link>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
             <div>
@@ -65,24 +65,24 @@ const SideNav = () => {
                             Home
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/profile" className="navlink">
                             <i className="material-icons left">account_circle</i>
                             User Profile
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/portfolio" className="navlink">
                             <i className="material-icons left">business_center</i>
                             Portfolio
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/" className="navlink">
                             <i className="material-icons left">account_balance</i>
                             Trade History
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/trends" className="navlink">
                             <i className="material-icons left">arrow_upward</i>
@@ -95,7 +95,7 @@ const SideNav = () => {
                             Blog
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/" className="navlink">
                             <i className="material-icons left">attach_money</i>
                             Fortune 500
@@ -106,7 +106,7 @@ const SideNav = () => {
                             <i className="material-icons left">link</i>
                             Resources
                         </Link>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
         </>
