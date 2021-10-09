@@ -7,6 +7,7 @@ import { QUERY_THOUGHTS } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
+
 const ThoughtForm = () => {
   const [thoughtText, setThoughtText] = useState('');
 
@@ -34,7 +35,7 @@ const ThoughtForm = () => {
       const { data } = await addThought({
         variables: {
           thoughtText,
-          thoughtAuthor: Auth.getProfile().data.username,
+          userId: Auth.getProfile().data._id,
         },
       });
 
@@ -60,9 +61,8 @@ const ThoughtForm = () => {
       {Auth.loggedIn() ? (
         <>
           <p
-            className={`m-0 ${
-              characterCount === 280 || error ? 'text-danger' : ''
-            }`}
+            className={`m-0 ${characterCount === 280 || error ? 'text-danger' : ''
+              }`}
           >
             Character Count: {characterCount}/280
           </p>
@@ -76,7 +76,7 @@ const ThoughtForm = () => {
                 placeholder="Here's a new thought..."
                 value={thoughtText}
                 className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
+                style={{ lineHeight: '1.5', resize: 'vertical', color: 'white' }}
                 onChange={handleChange}
               ></textarea>
             </div>
