@@ -2,49 +2,49 @@
   {
     "name": "Apple",
     "ticker": "AAPL",
-    "previousClosingPrice": 123.43,
-    "updatedToday": false
+    "previousClosingPrice": 142.9,
+    "updatedToday": true
   },
   {
     "name": "Google",
     "ticker": "GOOG",
-    "previousClosingPrice": 123.43,
-    "updatedToday": false
+    "previousClosingPrice": 2795.71,
+    "updatedToday": true
   },
   {
     "name": "Facebook",
     "ticker": "FB",
-    "previousClosingPrice": 123.43,
-    "updatedToday": false
+    "previousClosingPrice": 330.05,
+    "updatedToday": true
   },
   {
     "name": "Amazon",
     "ticker": "AMZN",
-    "previousClosingPrice": 123.43,
-    "updatedToday": false
+    "previousClosingPrice": 3288.62,
+    "updatedToday": true
   },
   {
     "name": "Netflix",
     "ticker": "NFLX",
-    "previousClosingPrice": 123.43,
-    "updatedToday": false
+    "previousClosingPrice": 632.66,
+    "updatedToday": true
   },
   {
     "name": "Tesla",
     "ticker": "TSLA",
-    "previousClosingPrice": 123.43,
-    "updatedToday": false
+    "previousClosingPrice": 785.49,
+    "updatedToday": true
   },
   {
     "name": "Microsoft",
     "ticker": "MSFT",
-    "previousClosingPrice": 123.43,
-    "updatedToday": false
+    "previousClosingPrice": 294.85,
+    "updatedToday": true
   },
   {
     "name": "Nvidia",
     "ticker": "NVDA",
-    "previousClosingPrice": 123.43,
-    "updatedToday": false
+    "previousClosingPrice": 208.31,
+    "updatedToday": true
   }
 ]
