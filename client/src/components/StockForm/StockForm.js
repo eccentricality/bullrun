@@ -35,7 +35,8 @@ function Stockform() {
 
     const handleChange = (event) => {
         const { value } = event.target;
-        setTicker(value);
+        const myTicker = value.toUpperCase() 
+        setTicker(myTicker);
     };
 
 
