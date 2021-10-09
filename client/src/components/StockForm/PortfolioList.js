@@ -1,10 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './stockform.css'
+import { useMutation } from '@apollo/client';
+import { SELL_ASSET, QUERY_PORTFOLIO } from '../../utils/mutations';
 
 
-function PortfolioList({ portfolioAssets, totalAssets }) {
 
-    console.log(portfolioAssets)
+function PortfolioList({ portfolioAssets, totalAssets, myID }) {
+
+    const [sellAsset, { error }] = useMutation(SELL_ASSET);
+    const [sellQuantity, setSellQuantity] = useState();
+
+    const handleChange = (event) => {
+        const { value } = event.target;
+        const myAmount = parseInt(value)
+        setSellQuantity(myAmount);
+    };
+    //holds obj to send to add portfolio
+    const handleSellStock = async (event) => {
+        event.preventDefault()
+        console.log({
+            userId: myID.data._id,
+            assetId: event.target.dataset._id,
+            sellPrice: event.target.dataset.price,
+            quantity: sellQuantity
+        })
+        const myPrice = parseInt(event.target.dataset.price)
+
+        await sellAsset({
+            variables: {
+                userId: myID.data._id,
+                assetId: event.target.dataset._id,
+                sellPrice: myPrice,
+                quantity: sellQuantity
+            }
+        })
+    };
 
     if (!portfolioAssets === []) {
         return <h3>No Assets Yet!</h3>;
@@ -37,8 +67,13 @@ function PortfolioList({ portfolioAssets, totalAssets }) {
                                 <td>{portfolioAsset.ticker}</td>
                                 <td>{portfolioAsset.purchasePrice}</td>
                                 <td>{portfolioAsset.quantity}</td>
-                                <td><input className="max-width" type='number'></input></td>
-                                <td><button className="waves-effect waves-light btn" type="submit" id={portfolioAsset._id}>Sell</button></td>
+                                <td><input className="max-width" type='number' onChange={handleChange}></input></td>
+                                <td><button className="waves-effect waves-light btn" type="submit"
+                                    onClick={(event) => handleSellStock(event)}
+                                    data-_id={portfolioAsset._id}
+                                    data-price={portfolioAsset.purchasePrice}
+                                    data-quantity={portfolioAsset.quantity}
+                                >Sell</button></td>
                             </tr>
                         ))}
                     <tbody>

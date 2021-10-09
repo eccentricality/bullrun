@@ -108,7 +108,7 @@ function Buyform({ price, ticker, userID }) {
                             onClick={(event) => handleAddStock(event)}>Buy</button>
                     </div>
                 </div>
-                <PortfolioList portfolioAssets={portfolioAssets} totalAssets={totalAssets} />
+                <PortfolioList portfolioAssets={portfolioAssets} totalAssets={totalAssets} myID={myID}/>
             </div>
         </>
     );

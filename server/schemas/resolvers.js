@@ -112,7 +112,7 @@ const resolvers = {
 
     //This mutation is used to sell an asset to a portfolio
     sellAsset: async (_, { userId, assetId, quantity, sellPrice }, context) => {
-
+      console.log('first')
       //find the sold asset
       const soldAsset = Asset.findOne({ _id: assetId });
       //compare sold qty to asset qty, if it matches, remove asset, else update
@@ -123,7 +123,7 @@ const resolvers = {
       };
       //get user
       const user = await User.findOne({ _id: userId });
-
+      console.log('second')
       //get user portfolio
       const portfolio = await Portfolio.findOne({ user: user._id });
       //get the total cash and total assets of portfolio currently
@@ -140,7 +140,7 @@ const resolvers = {
           totalAssetValue: (portfolioTotalAssets - (quantity * sellPrice)),
         });
 
-
+        console.log('third')
       return await Portfolio.findOne({ _id: updatedPortfolio._id })
         .populate('assets', [, 'ticker', 'quantity', 'purchasePrice']);
     },

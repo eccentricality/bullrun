@@ -72,6 +72,31 @@ export const ADD_ASSET = gql`
   }
 `;
 
+export const SELL_ASSET = gql`
+  mutation sellAsset(
+    $userId: ID,
+    $assetId: ID,
+    $quantity: Int,
+    $sellPrice: NonNegativeFloat
+  ) {
+    sellAsset(
+      userId: $userId,
+      assetId: $assetId,
+      quantity: $quantity,
+      sellPrice: $sellPrice
+    ) {
+      totalCash,
+      totalAssetValue,
+      assets {
+        ticker,
+        quantity,
+        purchasePrice
+        _id
+      }
+    }
+  }
+`;
+
 export const LOGIN_USER = gql`
   mutation login($email: String, $password: String) {
     login(email: $email, password: $password) {
