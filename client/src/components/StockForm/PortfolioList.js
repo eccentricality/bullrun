@@ -13,11 +13,11 @@ function PortfolioList({ portfolioAssets, totalAssets, myID }) {
     const handleChange = (event) => {
         const { value } = event.target;
         const myAmount = parseInt(value)
+        console.log(myAmount)
         setSellQuantity(myAmount);
     };
     //holds obj to send to add portfolio
     const handleSellStock = async (event) => {
-        event.preventDefault()
         
         const myPrice = parseInt(event.target.dataset.price)
 
@@ -52,7 +52,7 @@ function PortfolioList({ portfolioAssets, totalAssets, myID }) {
                             <th>Name</th>
                             <th>Item Name</th>
                             <th>Item Price</th>
-                            <th>Quanity</th>
+                            <th>Quantity</th>
                             <th>Sell</th>
                         </tr>
                     </thead>

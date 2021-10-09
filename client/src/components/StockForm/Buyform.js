@@ -67,28 +67,31 @@ function Buyform({ price, ticker, userID }) {
         const purchasePrice = parseFloat(inputPrice.current.innerHTML)
         const quantity = parseInt(amount)
         // console.log("id " + myID.data._id, "price " + purchasePrice, "quanity " + quantity, "ticker " + inputTicker.current.innerHTML)
-        await addAsset({
-            variables: {
-                userId: myID.data._id,
-                purchasePrice,
-                ticker: inputTicker.current.innerHTML,
-                quantity
-            }
-        })
-        const test = await queryPortfolio({
-            variables: { userId: myID.data._id },
-        })
-
-        setPortfolioAssets(test.data.portfolio.assets)
-
-        //total cash
-        const myTotalCashUnrounded = test.data.portfolio.totalCash
-        const myTotalCash = myTotalCashUnrounded.toFixed(2)
-        setTotalCash(myTotalCash)
-        //total assets 
-        const myTotalAssetValueUnrounded = test.data.portfolio.totalAssetValue
-        const myTotalAssetValue = myTotalAssetValueUnrounded.toFixed(2)
-        setTotalAssets(myTotalAssetValue)
+        if (purchasePrice) {
+            await addAsset({
+                variables: {
+                    userId: myID.data._id,
+                    purchasePrice,
+                    ticker: inputTicker.current.innerHTML,
+                    quantity
+                }
+            })
+            const test = await queryPortfolio({
+                variables: { userId: myID.data._id },
+            })
+    
+            setPortfolioAssets(test.data.portfolio.assets)
+    
+            //total cash
+            const myTotalCashUnrounded = test.data.portfolio.totalCash
+            const myTotalCash = myTotalCashUnrounded.toFixed(2)
+            setTotalCash(myTotalCash)
+            //total assets 
+            const myTotalAssetValueUnrounded = test.data.portfolio.totalAssetValue
+            const myTotalAssetValue = myTotalAssetValueUnrounded.toFixed(2)
+            setTotalAssets(myTotalAssetValue)
+        }
+        
     };
 
 
