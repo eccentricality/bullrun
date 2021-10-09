@@ -40,9 +40,9 @@ const resolvers = {
       return await Thought.findOne({ _id: thoughtId });
     },
 
-    googleTrends: async (_, { input }) => {
+    googleTrends: async (_, args) => {
       try {
-        const results = await googleTrends.realTimeTrends(input)
+        const results = await googleTrends.realTimeTrends({ geo: "US", category: "b" });
         console.log('These results are awesome', JSON.parse(results).storySummaries.trendingStories);
         return JSON.parse(results).storySummaries.trendingStories;
       } catch (err) {
@@ -54,7 +54,7 @@ const resolvers = {
     portfolio: async (_, { userId }, context) => {
       const user = await User.findOne({ _id: userId });
       return await Portfolio.findOne({ user: user })
-      .populate('assets', [, 'ticker', 'quantity', 'purchasePrice'])
+        .populate('assets', [, 'ticker', 'quantity', 'purchasePrice'])
     },
 
     addUser: async (_, { username, name, email, password }) => {
@@ -89,9 +89,12 @@ const resolvers = {
     addAsset: async (_, { userId, ticker, quantity, purchasePrice }, context) => {
       //get price of stock
       //first find the user to get portfolio
-      const newAsset = { userId, ticker, quantity, purchasePrice };
+      const latestValue = parseFloat(quantity) * parseFloat(purchasePrice);
+      const newAsset = { userId, ticker, quantity, purchasePrice, latestValue };
       const user = await User.findOne({ _id: userId });
       const asset = await Asset.create(newAsset);
+      console.log(newAsset);
+      console.log(asset);
       const portfolio = await Portfolio.findOne({ user: user._id });
       const portfolioTotalCash = portfolio.totalCash;
       const portfolioTotalAssets = portfolio.totalAssetValue
@@ -107,54 +110,53 @@ const resolvers = {
 
 
       return await Portfolio.findOne({ _id: updatedPortfolio._id })
-        .populate('assets', [, 'ticker', 'quantity', 'purchasePrice']);
+        .populate('assets', [, 'ticker', 'quantity', 'purchasePrice', 'latestValue']);
     },
 
     //This mutation is used to sell an asset to a portfolio
-    sellAsset: async (_, { userId, assetId, quantity, sellPrice }, context) => {
-      console.log('first')
-      //find the sold asset
-      const soldAsset = Asset.findOne({ _id: assetId });
-      //compare sold qty to asset qty, if it matches, remove asset, else update
-      if (quantity === soldAsset.quantity) {
-        Asset.findOneAndRemove({ _id: assetId });
-      } else {
-        Asset.findOneAndUpdate({ _id: assetId }, { quantity: (soldAsset.quantity - quantity) });
-      };
-      //get user
-      const user = await User.findOne({ _id: userId });
-      console.log('second')
-      //get user portfolio
-      const portfolio = await Portfolio.findOne({ user: user._id });
-      //get the total cash and total assets of portfolio currently
-      const portfolioTotalCash = portfolio.totalCash;
-      const portfolioTotalAssets = portfolio.totalAssetValue
+     sellAsset: async (_, { userId, assetId, quantity, sellPrice }, context) => {
 
-      //update portfolio with increased cash, lower asset value
-      const updatedPortfolio = await Portfolio.findOneAndUpdate(
+      quantity = parseFloat(quantity);
+      sellPrice = parseFloat(sellPrice);
+      //find the sold asset
+      const soldAsset = await Asset.findOne({ _id: assetId });
+      console.log(soldAsset);
+      const stock = await Stock.findOne({ ticker: soldAsset.ticker });
+
+      if (quantity === soldAsset.quantity) {
+        await Asset.findOneAndRemove({ _id: assetId });
+      } else {
+        await Asset.findOneAndUpdate({ _id: assetId },
+          {
+            quantity: (soldAsset.quantity - quantity),
+            latestValue: ((soldAsset.quantity - quantity) * stock.previousClosingPrice)
+          });
+      };
+
+      const user = await User.findOne({ _id: userId });
+
+      const portfolio = await Portfolio.findOne({ user })
+        .populate('assets', ['ticker', 'quantity', 'purchasePrice', 'latestValue']);
+
+      const portfolioAssets = portfolio.assets;
+
+      let totalAssetValue = 0;
+      if (portfolioAssets.length) {
+        for (let i = 0; i < portfolioAssets.length; i++) {
+          let value = parseFloat(portfolioAssets[0].latestValue)
+          totalAssetValue = totalAssetValue + value;
+        };
+      };
+      let totalCash = portfolio.totalCash + (quantity * sellPrice);
+      console.log(typeof totalAssetValue);
+      return await Portfolio.findOneAndUpdate(
         {
           _id: portfolio._id
         },
         {
-          totalCash: (portfolioTotalCash + (quantity * sellPrice)),
-          totalAssetValue: (portfolioTotalAssets - (quantity * sellPrice)),
-        });
-
-        console.log('third')
-      return await Portfolio.findOne({ _id: updatedPortfolio._id })
-        .populate('assets', [, 'ticker', 'quantity', 'purchasePrice']);
-    },
-    addThought: async (parent, { thoughtText, userId }) => {
-      const user = await User.findOne({ _id: userId });
-      const thought = await Thought.create({ thoughtText, user });
-
-      //leaving out for now 
-      // await User.findOneAndUpdate(
-      //   { username: thoughtAuthor },
-      //   { $addToSet: { thoughts: thought._id } }
-      // );
-
-      return thought;
+          totalCash,
+          totalAssetValue,
+        }).populate('assets', [, 'ticker', 'quantity', 'purchasePrice', 'latestValue']);
     },
     addComment: async (parent, { thoughtId, commentText, userId }) => {
       const user = await User.findOne({ _id: userId });

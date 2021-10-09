@@ -13,6 +13,10 @@ const assetSchema = new Schema({
     purchasePrice: {
         type: Number,
         required: false
+    },
+    latestValue: {
+        type: Number,
+        required: false
     }
 },
     {

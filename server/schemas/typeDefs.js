@@ -21,6 +21,7 @@ const typeDefs = gql`
     ticker: String
     quantity: Int
     purchasePrice: NonNegativeFloat
+    latestValue: NonNegativeFloat
     created_at: DateTime
     updated_at: DateTime
     }
@@ -99,7 +100,7 @@ const typeDefs = gql`
     asset(id: ID!): Asset
     portfolios:[Portfolio]
     currentStockPrice(ticker: String!): [String]
-    googleTrends(input: TrendInput!): [Trend]
+    googleTrends: [Trend]
     thoughts: [Thought]
     thought(thoughtId: ID!): Thought
   }
