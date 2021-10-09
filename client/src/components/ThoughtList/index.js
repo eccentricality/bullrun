@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './index.css';
+import moment from 'moment';
 
 const ThoughtList = ({ thoughts, title }) => {
   if (!thoughts.length) {
@@ -8,7 +9,7 @@ const ThoughtList = ({ thoughts, title }) => {
       <div className="thoughtList">
         <h4>No Thoughts Yet</h4>
       </div>
-    )  
+    )
   }
 
   return (
@@ -20,7 +21,7 @@ const ThoughtList = ({ thoughts, title }) => {
             <h4 className="card-header">
               {thought.user.username} <br />
               <span className="postDate">
-                had this thought on {thought.created_at}
+                had this thought on {moment(thought.created_at).format("MM/DD/YYYY")}
               </span>
             </h4>
             <div className="card-body">
