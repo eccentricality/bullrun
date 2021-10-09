@@ -1,14 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './index.css';
 
 const ThoughtList = ({ thoughts, title }) => {
   if (!thoughts.length) {
-    return <h3>No Thoughts Yet</h3>;
+    return (
+      <div className="thoughtList">
+        <h4>No Thoughts Yet</h4>
+      </div>
+    )  
   }
 
   return (
-    <div>
-      <h3>{title}</h3>
+    <div className="thoughtList">
+      <h4>{title}</h4>
       {thoughts &&
         thoughts.map((thought) => (
           <div key={thought._id} className="card mb-3">

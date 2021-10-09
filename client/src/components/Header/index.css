@@ -12,6 +12,11 @@
     color: #039be5;
 }
 
+.loginText {
+    display: inline-block;
+    margin-right: 1em;
+}
+
 .logo {
     background-image: '../../logo.png';
 }

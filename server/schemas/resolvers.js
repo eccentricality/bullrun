@@ -114,7 +114,7 @@ const resolvers = {
     },
 
     //This mutation is used to sell an asset to a portfolio
-    sellAsset: async (_, { userId, assetId, quantity, sellPrice }, context) => {
+     sellAsset: async (_, { userId, assetId, quantity, sellPrice }, context) => {
 
       quantity = parseFloat(quantity);
       sellPrice = parseFloat(sellPrice);
@@ -157,18 +157,6 @@ const resolvers = {
           totalCash,
           totalAssetValue,
         }).populate('assets', [, 'ticker', 'quantity', 'purchasePrice', 'latestValue']);
-    },
-    addThought: async (parent, { thoughtText, userId }) => {
-      const user = await User.findOne({ _id: userId });
-      const thought = await Thought.create({ thoughtText, user });
-
-      //leaving out for now 
-      // await User.findOneAndUpdate(
-      //   { username: thoughtAuthor },
-      //   { $addToSet: { thoughts: thought._id } }
-      // );
-
-      return thought;
     },
     addComment: async (parent, { thoughtId, commentText, userId }) => {
       const user = await User.findOne({ _id: userId });

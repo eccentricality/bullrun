@@ -66,7 +66,7 @@ function Buyform({ price, ticker, userID }) {
         event.preventDefault()
         const purchasePrice = parseFloat(inputPrice.current.innerHTML)
         const quantity = parseInt(amount)
-        console.log("id " + myID.data._id, "price " + purchasePrice, "quanity " + quantity, "ticker " + inputTicker.current.innerHTML)
+        // console.log("id " + myID.data._id, "price " + purchasePrice, "quanity " + quantity, "ticker " + inputTicker.current.innerHTML)
         await addAsset({
             variables: {
                 userId: myID.data._id,
@@ -108,7 +108,7 @@ function Buyform({ price, ticker, userID }) {
                             onClick={(event) => handleAddStock(event)}>Buy</button>
                     </div>
                 </div>
-                <PortfolioList portfolioAssets={portfolioAssets} totalAssets={totalAssets} />
+                <PortfolioList portfolioAssets={portfolioAssets} totalAssets={totalAssets} myID={myID}/>
             </div>
         </>
     );
