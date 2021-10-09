@@ -87,6 +87,9 @@ function App() {
             <Route exact path="/portfolio">
               <StockForm />
             </Route>
+            <Route exact path="/trends">
+              <Trends />
+            </Route>
           </div>
           <Footer />
         </div>

@@ -9,13 +9,11 @@ export default function Trends({ trend, title }) {
     const topTrend = trends[0]
     // const checkTrendsNow = trends[0].shareUrl
 
-    console.log("TOP TREND", topTrend)
-
     if (trends) {
         return (
             <>
                 <div>
-                    THE TOP TRENDS ARE: 
+                    THE TOP TRENDING TOPICS ARE: {topTrend.title}
                 </div>
             </>
         )
