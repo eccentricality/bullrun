@@ -27,7 +27,7 @@ const Blog = () => {
           ) : (
             <ThoughtList
               thoughts={thoughts}
-              title="Some Feed for Thought(s)..."
+              title="Thoughts on Trading:"
             />
           )}
         </div>

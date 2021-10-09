@@ -16,12 +16,12 @@ const Header = () => {
     if (Auth.loggedIn()) {
       return (
         <div className="sign-in">
+          <p className="loginText">
+            Welcome, {Auth.getProfile().data.username}!
+          </p>
           <Link className="navlink" onClick={logout}>
             Signout
           </Link>
-          <p>
-            Welcome, {Auth.getProfile().data.username}!
-          </p>
         </div>
       )}
     // If logged out show login controls
