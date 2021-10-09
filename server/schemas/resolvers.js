@@ -159,6 +159,21 @@ const resolvers = {
           totalAssetValue,
         }).populate('assets', [, 'ticker', 'quantity', 'purchasePrice', 'latestValue']);
     },
+    
+        addThought: async (parent, { thoughtText, userId }) => {
+      const user = await User.findOne({ _id: userId });
+      const thought = await Thought.create({ thoughtText, user });
+
+      //leaving out for now 
+      // await User.findOneAndUpdate(
+      //   { username: thoughtAuthor },
+      //   { $addToSet: { thoughts: thought._id } }
+      // );
+
+      return thought;
+    },
+    
+    
     addComment: async (parent, { thoughtId, commentText, userId }) => {
       const user = await User.findOne({ _id: userId });
       return Thought.findOneAndUpdate(
