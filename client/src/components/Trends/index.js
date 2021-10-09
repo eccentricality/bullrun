@@ -2,18 +2,16 @@ import { useQuery } from "@apollo/client";
 import { QUERY_GOOGLE_TRENDS } from "../../utils/queries";
 
 export default function Trends({ trend, title }) {
-  const { loading, data } = useQuery(QUERY_GOOGLE_TRENDS, {
+  const { loading, error, data } = useQuery(QUERY_GOOGLE_TRENDS, {
     variables: { input: { geo: "US", category: "all" } },
   });
-  // console.log("What is data", data)
+
+  if (loading) return <p>STILL LOADING</p>
+
   const trends = data?.googleTrends || [];
-  // const checkTrendsNow = trends[0].shareUrl
-  // console.log('ENTITY NAMES', trends[0].entityNames);
-  // console.log('WHAT IS TRENDS', trends[0].entityNames)
 
   if (trends) {
-    // const trendingKeywords = trends[0].entityNames;
-    // const trendingKeywords2 = trends[1].entityNames[0];
+
     return (
       <>
         {trends && (
