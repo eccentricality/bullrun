@@ -100,10 +100,10 @@ const typeDefs = gql`
     asset(id: ID!): Asset
     portfolios:[Portfolio]
     currentStockPrice(ticker: String!): [String]
-    googleTrends: [Trend]
+    googleTrends(input: TrendInput): [Trend]
     thoughts: [Thought]
     thought(thoughtId: ID!): Thought
-  }
+  } 
 
   type Mutation {
     portfolio(userId: ID!): Portfolio
