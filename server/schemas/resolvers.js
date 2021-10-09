@@ -27,7 +27,6 @@ const resolvers = {
     portfolios: async () => {
       return await Portfolio.find();
     },
-=
 
     currentStockPrice: async (_, { ticker }) => {
       const data = await externalGetPrice(ticker);
