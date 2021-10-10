@@ -51,7 +51,7 @@ function PortfolioList({ portfolioAssets, totalAssets, myID }) {
                         <tr>
                             <th>Ticker</th>
                             <th>Price</th>
-                            <th>Quantity</th>
+                            <th>Qty</th>
                             <th>Sell</th>
                         </tr>
                     </thead>
@@ -63,7 +63,7 @@ function PortfolioList({ portfolioAssets, totalAssets, myID }) {
                                 <td>{portfolioAsset.purchasePrice}</td>
                                 <td>{portfolioAsset.quantity}</td>
                                 <td><input className="max-width" type='number' onChange={handleChange}></input></td>
-                                <td><button className="waves-effect waves-light btn" type="submit"
+                                <td><button className="waves-effect waves-light" type="submit"
                                     onClick={(event) => handleSellStock(event)}
                                     data-_id={portfolioAsset._id}
                                     data-price={portfolioAsset.purchasePrice}
